@@ -1,6 +1,8 @@
 # Ultimate XSS Initiator
 
-![Tool Preview](https://github.com/Abhishek-Dirisipo/Ultimate-XSS-Initiator/assets/122773950/23afcc4e-2ad4-4b76-b19e-00413fb38900)
+![Screenshot 2023-08-23 at 11 45 48 PM](https://github.com/Abhishek-Dirisipo/Ultimate-XSS-Initiator/assets/122773950/27603605-195c-47e1-b07d-10d681f9ee19)
+
+
 
 **Note:** Ultimate XSS Initiator requires a text file containing URLs to perform analysis. You can use tools like [ParamSpider](https://github.com/devanshbatham/ParamSpider) to gather URLs. For setting payload positions, use FUZZ notation.
 
@@ -15,16 +17,18 @@ Ultimate XSS Initiator is a powerful tool designed for analyzing URLs for variou
 ## Command Types
 
 Skip specific vulnerabilities using command types:
+![Screenshot 2023-08-23 at 11 54 49 PM](https://github.com/Abhishek-Dirisipo/Ultimate-XSS-Initiator/assets/122773950/aa47fb07-67f5-4aae-a57f-8d92199a0fdf)
+![Screenshot 2023-08-23 at 11 57 37 PM](https://github.com/Abhishek-Dirisipo/Ultimate-XSS-Initiator/assets/122773950/420a7672-fe95-4f08-89c2-bf45608417e2)
 
-![Skip XSS](https://github.com/Abhishek-Dirisipo/Ultimate-XSS-Initiator/assets/122773950/bfb99bcc-a820-4263-80d0-53de5f68fcf6)
-![Skip RCE](https://github.com/Abhishek-Dirisipo/Ultimate-XSS-Initiator/assets/122773950/fe169fb5-a300-40a1-82f3-06d4a7c05181)
+
 
 ## Usage
 
 1. Select a URL text file
 2. Choose parameters length
 
-![Select URL](https://github.com/Abhishek-Dirisipo/Ultimate-XSS-Initiator/assets/122773950/7730b7cb-7ae7-40ee-9838-aa86f4c276a4)
+![Screenshot 2023-08-24 at 12 07 37 AM](https://github.com/Abhishek-Dirisipo/Ultimate-XSS-Initiator/assets/122773950/b60fc7b9-e210-4002-b477-68ec4ed00124)
+
 
 ## Burp Collaborator
 
