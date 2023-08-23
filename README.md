@@ -2,6 +2,8 @@
 
 ![Tool Preview](https://github.com/Abhishek-Dirisipo/Ultimate-XSS-Initiator/assets/122773950/23afcc4e-2ad4-4b76-b19e-00413fb38900)
 
+**Note:** Ultimate XSS Initiator requires a text file containing URLs to perform analysis. You can use tools like [ParamSpider](https://github.com/devanshbatham/ParamSpider) to gather URLs. For setting payload positions, use FUZZ notation.
+
 Ultimate XSS Initiator is a powerful tool designed for analyzing URLs for various vulnerabilities including XSS, RCE, SSRF, SSTI, and SQL error indicators.
 
 ## Features
