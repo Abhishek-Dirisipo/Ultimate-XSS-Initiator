@@ -3,6 +3,7 @@
 # Ultimate XSS Initiator
 
 cd Ultimate-XSS-Initiator
+
 python3 uxi.py
 
 ![Screenshot 2023-08-23 at 11 45 48 PM](https://github.com/Abhishek-Dirisipo/Ultimate-XSS-Initiator/assets/122773950/27603605-195c-47e1-b07d-10d681f9ee19)
