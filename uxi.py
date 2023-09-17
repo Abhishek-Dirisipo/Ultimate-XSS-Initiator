@@ -799,7 +799,7 @@ for line in Lines:
             
             if "defaultparam" in Lines2[i]: #CHECKNG PUT *** *** *** *** *** *** *** **
                 try:
-                    #check_put(target,parameter)
+                    check_put(target,parameter)
                     print(parameter)
                 except:
                     print("some n/w error for PUT upload ")
