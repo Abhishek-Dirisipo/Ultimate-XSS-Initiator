@@ -1,6 +1,6 @@
 
 
-# Ultimate XSS Initiator
+# Ultimate XSS Initiator( Beta )
 
 cd Ultimate-XSS-Initiator
 
