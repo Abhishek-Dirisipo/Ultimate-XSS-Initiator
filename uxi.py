@@ -788,6 +788,8 @@ if len(custom_header)!=0:
     headers_basic = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36','referer':'',custom_header[0]:custom_header[1]}
 else:
     headers_basic = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36','referer':''}
+    
+headers=headers_basic #header injection not working currently
 #__________________________________________________________________________ 
 
 
@@ -826,7 +828,7 @@ for url_for_fuzz in unique_urls:
             cookies = response.cookies
             cookies= cookies.get_dict()
             # To get the cookies as a dictionary:
-            headers=dict(response.headers)
+            #headers=dict(response.headers)
 
 
 
