@@ -86,8 +86,8 @@ input("\n-- press <enter> to start --\n")
 
 #************************** custom task / cheat codes ******************************
 
-cheat_code=input("\n example: 1.post,2.ssti,3.rce,4.sql,5.xss,6.owasp,7.header_inject,single,reset (you can use multiple at once) \n"+cyan_color+" tip: type 'header' to turn off header injection(recommended for faster scan)\n\nenter cheatcode to skip those processes:")
-cheat_code=cheat_code.lower()
+cheat_code=input("\n example: 1.post,2.ssti,3.rce,4.sql,5.xss,6.owasp,7.header_inject(disabled),single,reset (you can use multiple at once) \n"+cyan_color+" tip: type 'header' to turn off header injection(recommended for faster scan)\n\nenter cheatcode to skip those processes:")
+cheat_code=cheat_code.lower()+"header"
 
 print()
 
@@ -355,13 +355,18 @@ def my_function_owaspbypass(payload):
                 if len(op[0])<=1000:
                     print("  [*] output get:",str(op).replace("78907890",""))
                     op=str(op)
-                    if "><" in op or "<>" in op:
-                        print(Fore.MAGENTA +" ⭐️⭐️ xss filter bypass by owasp payloads !",payload)
+                    if "<>" in op:
+                        print(Fore.MAGENTA +" ⭐️⭐️ xss filter bypass by owasp payloads ! <> ",payload)
                         with open('xsslogabhi/xss_owasplogs.txt','a') as f1:
                             f1.write('\n'+' * '+url_for_fuzz.replace("FUZZ",payload))
                     if ">" in op or "<" in op:
-                        print(Fore.WHITE +" ⭐️ xss filter bypass by owasp payloads !",payload)
+                        print(Fore.WHITE +" ⭐️ xss filter bypass by owasp payloads ! < or >",payload)
                         with open('xsslogabhi/xss_owasplogs2.txt','a') as f1:
+                            f1.write('\n'+' * '+url_for_fuzz.replace("FUZZ",payload))
+                            
+                    if "><" in op:
+                        print(Fore.MAGENTA +" ⭐️ xss filter bypass by owasp payloads >< !",payload)
+                        with open('xsslogabhi/xss_owasplogs3.txt','a') as f1:
                             f1.write('\n'+' * '+url_for_fuzz.replace("FUZZ",payload))
 #******************************************************************************************************************
 
@@ -788,8 +793,7 @@ if len(custom_header)!=0:
     headers_basic = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36','referer':'',custom_header[0]:custom_header[1]}
 else:
     headers_basic = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36','referer':''}
-    
-headers=headers_basic #header injection not working currently
+headers=headers_basic
 #__________________________________________________________________________ 
 
 
@@ -805,7 +809,7 @@ for url_for_fuzz in unique_urls:
         continue
             
     url_for_fuzz=url_for_fuzz.replace("\n","")
-    print("[",count,"]:",url_for_fuzz)
+    print(red_color+"[",count,"]:",reset_color+url_for_fuzz)
 #___________________________________________________________________________________________________________________________________________________ 
 #____________________________________________________________________________________________________________________________________________________ 
 #____________________________________________________________________________________________________________________________________________________ 
@@ -965,7 +969,7 @@ for url_for_fuzz in unique_urls:
                 if ref_count==ref_count2:
                     print(white_color+"no special reflections --> skipping")
                     
-                    if "parametersMax" not in paramdirectory :
+                    if "parametersMax" not in paramdirectory and "403" not in str(getreq.status_code):
                         PL1="' or\'\"'<abhi>"
                         PL2=" AS INJECTX WHERE 1=1 AND 1=1 <abhi>\"\"ab''ab"
                         if __name__ =="__main__":
@@ -1096,7 +1100,6 @@ for url_for_fuzz in unique_urls:
 
                         t7.start()
                         t7.join()                            
-
 
 
 
@@ -1504,7 +1507,7 @@ for url_for_fuzz in unique_urls:
         elif paramdirectory!='parameters/parametersMax.txt' :
             print("  no reflective values found--> skipping..")
             
-            if enable_sql:
+            if enable_sql and "403" not in str(getreq.status_code):
                 PL1="' or\'\"'<abhi>\"\"ab''ab"
                 PL2=" AS INJECTX WHERE 1=1 AND 1=1 <abhi>\"\"ab''ab"
                 PL3="%F0%92%80%80%3D%27%27%2C%F0%92%89%BA%3D%21%F0%92%80%80%2B\"\"ab''ab%2C%F0%92%80%83%3D%21%F0%92%89%BA%2B%F0%92%80%80%2C%F0%92%87%BA%3D%F0%92%80%80%2B%7B%7D%2C%F0%92%8C%90%3D%F0%92%89%BA%5B%F0%92%80%80%2B%2B%5D%2C%0A%F0%92%80%9F%3D%F0%92%89%BA%5B%F0%92%88%AB%3D%F0%92%80%80%5D%2C%F0%92%80%86%3D%2B%2B%F0%92%88%AB%2B%F0%92%80%80%2C%F0%92%81%B9%3D%F0%92%87%BA%5B%F0%92%88%AB%2B%F0%92%80%86%5D%2C%F0%92%89%BA%5B%F0%92%81%B9%2B%3D%F0%92%87%BA%5B%F0%92%80%80%5D%0A%2B%28%F0%92%89%BA%2E%F0%92%80%83%2B%F0%92%87%BA%29%5B%F0%92%80%80%5D%2B%F0%92%80%83%5B%F0%92%80%86%5D%2B%F0%92%8C%90%2B%F0%92%80%9F%2B%F0%92%89%BA%5B%F0%92%88%AB%5D%2B%F0%92%81%B9%2B%F0%92%8C%90%2B%F0%92%87%BA%5B%F0%92%80%80%5D%0A%2B%F0%92%80%9F%5D%5B%F0%92%81%B9%5D%28%F0%92%80%83%5B%F0%92%80%80%5D%2B%F0%92%80%83%5B%F0%92%88%AB%5D%2B%F0%92%89%BA%5B%F0%E1%A8%86%3D''%2C%E1%A8%8A%3D!%E1%A8%86%2B%E1%A8%86%2C%E1%A8%8E%3D!%E1%A8%8A%2B%E1%A8%86%2C%E1%A8%82%3D%E1%A8%86%2B%7B%7D%2C%E1%A8%87%3D%E1%A8%8A%5B%E1%A8%86%2B%2B%5D%2C%E1%A8%8B%3D%E1%A8%8A%5B%E1%A8%8F%3D%E1%A8%86%5D%2C%E1%A8%83%3D%2B%2B%E1%A8%8F%2B%E1%A8%86%2C%E1%A8%85%3D%E1%A8%82%5B%E1%A8%8F%2B%E1%A8%83%5D%2C%E1%A8%8A%5B%E1%A8%85%2B%3D%E1%A8%82%5B%E1%A8%86%5D%2B(%E1%A8%8A.%E1%A8%8E%2B%E1%A8%82)%5B%E1%A8%86%5D%2B%E1%A8%8E%5B%E1%A8%83%5D%2B%E1%A8%87%2B%E1%A8%8B%2B%E1%A8%8A%5B%E1%A8%8F%5D%2B%E1%A8%85%2B%E1%A8%87%2B%E1%A8%82%5B%E1%A8%86%5D%2B%E1%A8%8B%5D%5B%E1%A8%85%5D(%E1%A8%8E%5B%E1%A8%86%5D%2B%E1%A8%8E%5B%E1%A8%8F%5D%2B%E1%A8%8A%5B%E1%A8%83%5D%2B%E1%A8%8B%2B%E1%A8%87%2B%22(%E1%A8%86%92%80%86%5D%2B%F0%92%80%9F%2B%F0%92%8C%90%2B%22%28%F0%92%80%80%29%22%29%28%and %2522%2520%2521 %253cabhi%253e"
