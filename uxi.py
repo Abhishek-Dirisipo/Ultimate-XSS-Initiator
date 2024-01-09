@@ -40,7 +40,7 @@ thread_limit=7
 
 
 
-banner=  Back.BLACK +'''\033[1;31;40m
+banner=  Back.BLACK +'\033[1;31;40m '+r'''
 
         (           (       *                             )  (    (      (        )  (           (                         )   (     
         )\ )  *   ) )\ )  (  `     (       *   )       ( /(  )\ ) )\ )   )\ )  ( /(  )\ )  *   ) )\ )    (       *   )  ( /(   )\ )  
@@ -321,7 +321,8 @@ def my_function_ssti(payload):
     tempflag=0
     for i in temp:
         if len(i)!=0:
-            op=re.findall("78907890+[\w\W]+",i)
+            op = re.findall(r"78907890+[\w\W]+", i)
+
             if len(op)!=0:
                 if len(op[0])<=100:
                     print("  [*] output get:",str(op).replace("78907890",""))
@@ -350,7 +351,7 @@ def my_function_owaspbypass(payload):
     tempflag=0
     for i in temp:
         if len(i)!=0:
-            op=re.findall("78907890+[\w\W]+",i)
+            op=re.findall(r"78907890+[\w\W]+",i)
             if len(op)!=0:
                 if len(op[0])<=1000:
                     print("  [*] output get:",str(op).replace("78907890",""))
@@ -461,7 +462,7 @@ def my_function(payload,parameter):
     tempflag=0
     for i in temp:
         if len(i)!=0:
-            op=re.findall("78907890+[\w\W]+",i)
+            op=re.findall(r"78907890+[\w\W]+",i)
             if len(op)!=0:
                 if len(op[0])<=100:
                     print("  [*] output get:",str(op).replace("78907890",""))
@@ -498,7 +499,7 @@ def my_function(payload,parameter):
         tempflag=0
         for i in temp:
             if len(i)!=0:
-                op=re.findall("78907890+[\w\W]+",i)
+                op=re.findall(r"78907890+[\w\W]+",i)
                 if len(op)!=0:
                     if len(op[0])<=100:
                         print("  [*] output get:",str(op).replace("78907890",""))
