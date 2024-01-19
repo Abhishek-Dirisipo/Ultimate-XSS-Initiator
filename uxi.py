@@ -288,6 +288,10 @@ else:
     with open('xsslogabhi/resume_stats/'+fn+'.'+user_param_input,'w') as ID1:
         ID1.write("0")
         resume_count=0
+        
+    with open('xsslogabhi/unique_stats/'+fn+'_'+user_param_input+'.txt','w') as ID1:
+        ID1.write("")
+        resume_count=0
 
 #**************************************function 2 write error *********************************************************
 def write_error():
