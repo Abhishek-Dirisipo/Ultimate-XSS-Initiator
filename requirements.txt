@@ -1,2 +1,20 @@
 colorama==0.4.4
+
+# requirements.txt
+
+# Selenium for web automation
+selenium==3.141.0
+
+# urllib for URL manipulation
+urllib3==1.26.7
+
+# ChromeDriver for Selenium (assuming you are using Chrome)
+chromedriver-autoinstaller==0.2.2
+
+# Other dependencies
+certifi==2021.5.30
+chardet==4.0.0
+idna==3.2
 requests==2.26.0
+soupsieve==2.3
+webdriver-manager==3.4.0
