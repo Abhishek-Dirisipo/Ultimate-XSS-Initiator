@@ -738,22 +738,32 @@ def my_function(payload,parameter):
 
 
 #************************************payload function 7 Put path upload *****************************
-def check_put(url,parameter):
-    url_put=re.sub(r'\?.*', '', url)
-    print("\n testing path upload for :",url_put)
-    
-    put_parameter=parameter.replace("?","").replace("=","")
+def check_put(url, parameter):
+    # Parse the URL to extract the base path
+    url_parsed = urlparse(url)
+    url_put = f"{url_parsed.scheme}://{url_parsed.netloc}{url_parsed.path}"
 
-    r = requests.put(url_put, data ={put_parameter:'abhishek<abhi>""'})
-    
-    status_code=str(r.status_code)
-    if status_code.startswith('2') or '<abhi>""' in r.text:
-        print("-upload Success -")
-        with open('xsslogabhi/Put_log.txt','a') as f1:
-            f1.write('\n'+' * '+url_put+" * put_parameter: "+put_parameter)        
-        
-    else:
-        print("-path upload Failure - ",r.status_code)
+    print("\nTesting path upload for:", url_put)
+
+    put_parameter = parameter.replace("?", "").replace("=", "")
+
+    try:
+        # Use the json parameter to send JSON data in the request body
+        r = requests.put(url_put, json={put_parameter: 'abhishek<abhi>""'})
+
+        status_code = str(r.status_code)
+
+        if status_code.startswith('2') or '<abhi>""' in r.text:
+            print("-Upload Success -")
+            with open('xsslogabhi/Put_log.txt', 'a') as f1:
+                f1.write('\n' + ' * ' + url_put + " * put_parameter: " + put_parameter)
+
+        else:
+            print("-Path Upload Failure - ", r.status_code)
+
+    except requests.RequestException as e:
+        print(f"Error during PUT request: {e}")
+
 
 #*****************************************************************************************************
 if not reset_count: #Unique urls
@@ -828,12 +838,18 @@ get_cookies_flag=True
 visited_netloc=""
 visited_main_urls_reflection={}
 
+
+delay_time=0
+
 for url_for_fuzz in unique_urls:
     count+=1    
     if count<=resume_count: # resuming count
         continue
             
     url_for_fuzz=url_for_fuzz.replace("\n","")
+    
+    time.sleep(delay_time) # here sleep delay implemented according to 429 status
+    
     print(red_color+"[",count,"]:",reset_color+url_for_fuzz)
 #___________________________________________________________________________________________________________________________________________________ 
 #____________________________________________________________________________________________________________________________________________________ 
@@ -907,6 +923,7 @@ for url_for_fuzz in unique_urls:
             continue
             
     try:
+        
         getreq=requests.get(url_for_fuzz.replace("FUZZ","FUZZ>"),headers=headers,cookies=cookies,timeout=30)
 
         post_parameter=parameter.replace("?","").replace("=","")
@@ -932,10 +949,15 @@ for url_for_fuzz in unique_urls:
                 thread_limit=2
                 print("\t speed further reduced to 2")
                 
-            else:
+            elif thread_limit==2:
                 thread_limit=1
                 print("\t speed further reduced to 1")
-
+            else:
+                print("  +1 sec sleep duration - Thread 1: current delay:",delay_time+1)
+                time.sleep(5)
+                
+                delay_time=delay_time+1 # delay time number is here : )
+                
         temp=getreq.text #get
         temp2=postreq.text #post
 
@@ -1119,24 +1141,31 @@ for url_for_fuzz in unique_urls:
 
                         t1.start()                       
                         t1.join()
+                        time.sleep(delay_time) # here sleep delay implemented according to 429 status
 
                         t2.start() 
                         t2.join()
+                        time.sleep(delay_time) # here sleep delay implemented according to 429 status
 
                         t3.start()
                         t3.join()
+                        time.sleep(delay_time) # here sleep delay implemented according to 429 status
 
                         t4.start()
                         t4.join()
+                        time.sleep(delay_time) # here sleep delay implemented according to 429 status
 
                         t5.start()                          
                         t5.join()
+                        time.sleep(delay_time) # here sleep delay implemented according to 429 status
 
                         t6.start()
                         t6.join()
+                        time.sleep(delay_time) # here sleep delay implemented according to 429 status
 
                         t7.start()
-                        t7.join()                            
+                        t7.join() 
+                        time.sleep(delay_time) # here sleep delay implemented according to 429 status                           
 
 
 
@@ -1217,24 +1246,31 @@ for url_for_fuzz in unique_urls:
 
                         t1.start()                       
                         t1.join()
+                        time.sleep(delay_time) # here sleep delay implemented according to 429 status
 
                         t2.start() 
                         t2.join()
+                        time.sleep(delay_time) # here sleep delay implemented according to 429 status
 
                         t3.start()
                         t3.join()
+                        time.sleep(delay_time) # here sleep delay implemented according to 429 status
 
                         t4.start()
                         t4.join()
+                        time.sleep(delay_time) # here sleep delay implemented according to 429 status
 
                         t5.start()                          
                         t5.join()
+                        time.sleep(delay_time) # here sleep delay implemented according to 429 status
 
                         t6.start()
                         t6.join()
+                        time.sleep(delay_time) # here sleep delay implemented according to 429 status
 
                         t7.start()
-                        t7.join()                            
+                        t7.join() 
+                        time.sleep(delay_time) # here sleep delay implemented according to 429 status                           
 
 
                 #set 3
@@ -1323,27 +1359,35 @@ for url_for_fuzz in unique_urls:
 
                         t1.start()                       
                         t1.join()
+                        time.sleep(delay_time) # here sleep delay implemented according to 429 status
 
                         t2.start() 
                         t2.join()
+                        time.sleep(delay_time) # here sleep delay implemented according to 429 status
 
                         t3.start()
                         t3.join()
+                        time.sleep(delay_time) # here sleep delay implemented according to 429 status
 
                         t4.start()
                         t4.join()
+                        time.sleep(delay_time) # here sleep delay implemented according to 429 status
 
                         t5.start()                          
                         t5.join()
+                        time.sleep(delay_time) # here sleep delay implemented according to 429 status
 
                         t6.start()
                         t6.join()
+                        time.sleep(delay_time) # here sleep delay implemented according to 429 status
 
                         t7.start()
                         t7.join() 
+                        time.sleep(delay_time) # here sleep delay implemented according to 429 status
 
                         t8.start()
                         t8.join()
+                        time.sleep(delay_time) # here sleep delay implemented according to 429 status
 
                 PL1="PGFiaGk+IiJhYicnIA=="
                 t1 = threading.Thread(target=my_function, args=(PL1,parameter,))
@@ -1419,21 +1463,27 @@ for url_for_fuzz in unique_urls:
                     
                     t1.start()                       
                     t1.join()
+                    time.sleep(delay_time) # here sleep delay implemented according to 429 status
                     
                     t2.start() 
                     t2.join()
+                    time.sleep(delay_time) # here sleep delay implemented according to 429 status
                     
                     t3.start()
                     t3.join()
+                    time.sleep(delay_time) # here sleep delay implemented according to 429 status
                     
                     t4.start()
                     t4.join()
+                    time.sleep(delay_time) # here sleep delay implemented according to 429 status
                     
                     t5.start()                          
                     t5.join()
+                    time.sleep(delay_time) # here sleep delay implemented according to 429 status
                     
                     t6.start()
                     t6.join()
+                    time.sleep(delay_time) # here sleep delay implemented according to 429 status
                    
                 
                 
@@ -1514,24 +1564,31 @@ for url_for_fuzz in unique_urls:
 
                     t1.start()                      
                     t1.join()
+                    time.sleep(delay_time) # here sleep delay implemented according to 429 status
 
                     t2.start() 
                     t2.join()
+                    time.sleep(delay_time) # here sleep delay implemented according to 429 status
 
                     t3.start()
                     t3.join()
+                    time.sleep(delay_time) # here sleep delay implemented according to 429 status
 
                     t4.start()
                     t4.join()
+                    time.sleep(delay_time) # here sleep delay implemented according to 429 status
 
                     t5.start()                          
                     t5.join()
+                    time.sleep(delay_time) # here sleep delay implemented according to 429 status
 
                     t6.start()
                     t6.join()
+                    time.sleep(delay_time) # here sleep delay implemented according to 429 status
 
                     t7.start()
-                    t7.join()                            
+                    t7.join() 
+                    time.sleep(delay_time) # here sleep delay implemented according to 429 status                           
 
 
 
@@ -1554,8 +1611,11 @@ for url_for_fuzz in unique_urls:
                     t2 = threading.Thread(target=my_function, args=(PL2,parameter,))
                     t3 = threading.Thread(target=my_function, args=(PL3,parameter,))
                     t1.start()
+                    time.sleep(delay_time) # here sleep delay implemented according to 429 status
                     t2.start()
+                    time.sleep(delay_time) # here sleep delay implemented according to 429 status
                     t3.start()
+                    time.sleep(delay_time) # here sleep delay implemented according to 429 status
                     t1.join()
                     t2.join()
                     t3.join()
@@ -1639,24 +1699,31 @@ for url_for_fuzz in unique_urls:
 
                     t1.start()                      
                     t1.join()
+                    time.sleep(delay_time) # here sleep delay implemented according to 429 status
 
                     t2.start() 
                     t2.join()
+                    time.sleep(delay_time) # here sleep delay implemented according to 429 status
 
                     t3.start()
                     t3.join()
+                    time.sleep(delay_time) # here sleep delay implemented according to 429 status
 
                     t4.start()
                     t4.join()
+                    time.sleep(delay_time) # here sleep delay implemented according to 429 status
 
                     t5.start()                          
                     t5.join()
+                    time.sleep(delay_time) # here sleep delay implemented according to 429 status
 
                     t6.start()
                     t6.join()
+                    time.sleep(delay_time) # here sleep delay implemented according to 429 status
 
                     t7.start()
-                    t7.join()                            
+                    t7.join() 
+                    time.sleep(delay_time) # here sleep delay implemented according to 429 status                           
 
 
 # *************.    *********************.     **********************
