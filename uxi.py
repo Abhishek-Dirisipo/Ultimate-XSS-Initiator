@@ -87,7 +87,7 @@ input("\n-- press <enter> to start --\n")
 #************************** custom task / cheat codes ******************************
 
 cheat_code=input("\n example: 1.post,2.ssti,3.rce,4.sql,5.xss,6.owasp,7.header_inject(disabled),single,reset (you can use multiple at once) \n"+cyan_color+" tip: type 'header' to turn off header injection(recommended for faster scan)\n\nenter cheatcode to skip those processes:")
-cheat_code=cheat_code.lower()+"header"
+cheat_code=cheat_code.lower()
 
 print()
 
@@ -396,59 +396,63 @@ def my_function_owaspbypass(payload):
 #******************************************************************************************************************
 
 #*************************************************** header ***********************************************************
-def header_inject(headers,main_url):
-    header_values =["%253cabhi%253e%2522%2522","<abhi>%22%22"]
-#    print("started: ",url)
+
+def header_inject(headers, main_url):
+    header_values = ["%253cabhi%253e%2522%2522", "<abhi>%22%22"]
+
     for header_value in header_values:
-        # Define the headers dictionary
-        enable_header_inject2=True
+        enable_header_inject = True
+
         try:
-            requests.get(main_url, headers=headers,timeout=10)
+            requests.get(main_url, headers=headers, timeout=10)
         except:
-            enable_header_inject2=False
+            enable_header_inject = False
+
         for key in headers:
+            if any(keyword in key for keyword in ["Date", "Content-Type", "Connection", "Host", "Content-Length", "Authorization", "Accept-Encoding"]):
+                continue
+
             modified_headers = headers.copy()
             modified_headers[key] = header_value
+
             try:
-                print("                                                                                         ",end="\r")
-                print("\tcurrent header:",key,":",modified_headers[key],end="\r")
-                if enable_header_inject2 and "Date" not in key and "Content-Type" not in key and "Connection" not in key and "Host" not in key and "Content-Length" not in key and "Authorization" not in key and "Accept-Encoding" not in key:
-                    response = requests.get(main_url, headers=modified_headers,timeout=30)
+                print(f"\tCurrent header: {key}: {modified_headers[key]}", end="\r")
+
+                if enable_header_inject:
+                    response = requests.get(main_url, headers=modified_headers, timeout=30)
                 else:
                     continue
-                enable_header_inject2=True
-                # Process the response as needed
 
-                response=response.text.lower()
-                #response="nothing<abhi>" #temporary test
-                
-                if "<abhi>\"\"" in response:
-                    print(" may vulnerable to xss through header:<abhi>\"\"")
-                    with open('xsslogabhi/header_reflections.txt','a') as f1:
-                        string_to_write="\n[*]url: "+str(url+" | "+key+":"+header_value)
-                        f1.write(string_to_write) 
-                        print("\t-->",string_to_write)
-                
-                elif "<abhi>" in response:
-                    print(" may vulnerable to xss through header:<abhi>")
-                    with open('xsslogabhi/header_reflections.txt','a') as f1:
-                        string_to_write="\n[-]url: "+str(url+" | "+key+":"+header_value)
-                        f1.write(string_to_write) 
-                        print("\t-->",string_to_write)
-                
+                enable_header_inject = True
+                response_text = response.text.lower()
+
+                if "<abhi>\"\"" in response_text:
+                    print(" May be vulnerable to XSS through header: <abhi>\"\"")
+                    log_xss(main_url, key, header_value)
+
+                elif "<abhi>" in response_text:
+                    print(" May be vulnerable to XSS through header: <abhi>")
+                    log_xss(main_url, key, header_value)
+
                 else:
-                    #print("\tno reflections",end="\r")
                     directories = ['bin', 'etc', 'boot', 'dev', 'home']
-                    if all(directory in response for directory in directories):
-                        print("vulnerable to RCE:",key)
-                        
+                    if all(directory in response_text for directory in directories):
+                        print(f"Vulnerable to RCE: {key}")
+
             except requests.exceptions.Timeout:
-                print("\theader exception occured,Request timed out")
-                enable_header_inject2=False
+                print("\tHeader exception occurred, Request timed out")
+                enable_header_inject = False
             except requests.exceptions.RequestException as e:
                 print(f"\tRequest error: {e}")
-                enable_header_inject2=False
+                enable_header_inject = False
     print()
+
+def log_xss(url, key, header_value):
+    with open('xsslogabhi/header_reflections.txt', 'a') as f1:
+        string_to_write = f"\n[*] URL: {url} | {key}:{header_value}"
+        f1.write(string_to_write)
+        print("\t-->", string_to_write)
+
 #**************************************************************************************************************
 
 #*******************************************payload function 7 main********************************************
