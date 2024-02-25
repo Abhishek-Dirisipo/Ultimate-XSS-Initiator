@@ -49,6 +49,13 @@ def delete_old_text_files(directory, days_threshold=7):
             except Exception as e:
                 print(f"Error deleting {file_path}: {e}")
 
+        if file.endswith(".txt") and os.path.getmtime(file_path) < threshold_time.timestamp():
+            try:
+                os.remove(file_path)
+                print(f"Deleted: {file_path}")
+            except Exception as e:
+                print(f"Error deleting {file_path}: {e}")
+
 # Specify the directories
 directories = ['xsslogabhi/unique_stats/', 'xsslogabhi/temp_stats/','xsslogabhi/unique_stats/input/']
 
@@ -1073,7 +1080,7 @@ for url_for_fuzz in unique_urls:
                 if ref_count==ref_count2:
                     print(white_color+"no special reflections --> skipping")
                     
-                    if "parametersMax" not in paramdirectory and "403" not in str(getreq.status_code):
+                    if "parametersMax" not in paramdirectory and "403" not in str(getreq.status_code) and enable_sql:
                         PL1="' or\'\"'<abhi>"
                         PL2=" AS INJECTX WHERE 1=1 AND 1=1 <abhi>\"\"ab''ab"
                         if __name__ =="__main__":
@@ -1833,4 +1840,3 @@ for url_for_fuzz in unique_urls:
 
     with open('xsslogabhi/resume_stats/'+fn+'.'+user_param_input,'w') as ID1:
         ID1.write(str(count))
-        
