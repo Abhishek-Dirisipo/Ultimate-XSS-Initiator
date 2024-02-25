@@ -263,33 +263,33 @@ print(cyan_color+" press 0 or 1 to run only with default single parameter\n pres
 bswpohob=input("✨enter your mode:  - ").lower()
 
 if "ssrf" in bswpohob:
-    paramdirectory='parameters/parametersSSRF.txt'
+    zigzigloldirctry='parameters/parametersSSRF.txt'
 
 
 elif "l" in bswpohob:
-    paramdirectory='parameters/parametersMax.txt'
+    zigzigloldirctry='parameters/parametersMax.txt'
     if "nd" in bswpohob:
-        paramdirectory='parameters/parametersMaxND.txt'
+        zigzigloldirctry='parameters/parametersMaxND.txt'
         
 elif "m" in bswpohob:
-    paramdirectory='parameters/parameters100.txt'
+    zigzigloldirctry='parameters/parameters100.txt'
     if "nd" in bswpohob:
-        paramdirectory='parameters/parameters100ND.txt'
+        zigzigloldirctry='parameters/parameters100ND.txt'
     
 elif "1" in bswpohob or "0" in bswpohob:
-    paramdirectory='parameters/noparameters.txt'
+    zigzigloldirctry='parameters/noparameters.txt'
     
 elif "s" in bswpohob:
-    paramdirectory='parameters/parametersMini.txt'
+    zigzigloldirctry='parameters/parametersMini.txt'
     if "nd" in bswpohob:
-        paramdirectory='parameters/parametersMiniND.txt'
+        zigzigloldirctry='parameters/parametersMiniND.txt'
     
 else:
-    paramdirectory='parameters/parameters100.txt'
+    zigzigloldirctry='parameters/parameters100.txt'
     
-print(vjvjhvjjbvc+"--selected parameters:",paramdirectory)
+print(vjvjhvjjbvc+"--selected parameters:",zigzigloldirctry)
 
-params_file = open(paramdirectory, 'r')
+params_file = open(zigzigloldirctry, 'r')
 params_2= params_file.readlines()
 #*********************+++++++++++++++++++++++++++++++*****************************
 
@@ -310,14 +310,14 @@ elif len(jkbsjkbds)!=0 and len(jkbsjkbds)>5:
 
 #************custom header - disabled *******************
 #X-Request-Purpose: Research
-custom_header=input(cyan_color+"✨enter custom header (just press enter for now): ")
-if len(custom_header)!=0:
-    custom_header=custom_header.split(":")
-    if len(custom_header)==1:
-        custom_header.append("")
-    custom_header[0]=custom_header[0].replace(" ","")
-    custom_header[1]=custom_header[1].replace(" ","")
-    print(custom_header)
+hdhdhdlolw=input(cyan_color+"✨enter custom header (just press enter for now): ")
+if len(hdhdhdlolw)!=0:
+    hdhdhdlolw=hdhdhdlolw.split(":")
+    if len(hdhdhdlolw)==1:
+        hdhdhdlolw.append("")
+    hdhdhdlolw[0]=hdhdhdlolw[0].replace(" ","")
+    hdhdhdlolw[1]=hdhdhdlolw[1].replace(" ","")
+    print(hdhdhdlolw)
 #*********************************************
 
 #************************************ logging into temp_stats *******************************************
@@ -364,7 +364,7 @@ def hfhfhfrce(payload):
 
 #**************************************function 4 ssti *********************************************************
 
-def my_function_ssti(payload):
+def iamabhishek_ssti(payload):
     print("[*]ssti Payload->",payload)
     req=requests.get(url_for_fuzz.replace("FUZZ",payload),headers=headers,cookies=cookies,timeout=50)
     req1=req #modified
@@ -503,7 +503,7 @@ def log_xss(url, key, header_value):
 #**************************************************************************************************************
 
 #*******************************************payload function 7 main********************************************
-def my_function(payload,parameter):
+def iamabhishek(payload,parameter):
     print("[*] Payload->",payload)
 
     
@@ -820,18 +820,18 @@ def check_put(url, parameter):
 if not reset_count: #Unique urls
     try:
         with open('xsslogabhi/unique_stats/'+fn+'_'+bswpohob+".txt",'r') as ID1:
-            unique_urls=ID1.readlines()
+            bambambam=ID1.readlines()
             print("💾 previously processed unique files found ...")
-            unique_urls_flag=True
+            bambambam_flag=True
     except:
-            unique_urls_flag=False
+            bambambam_flag=False
 else:
-    unique_urls_flag=False
+    bambambam_flag=False
 #__________________________________________________________________________
-if not unique_urls_flag:
+if not bambambam_flag:
     
     print("please wait .. generating url variations for fuzzing ! this might depend on the length of urls and parameters")
-    unique_urls = set()
+    bambambam = set()
     count = 0
     
     for url in Urls:
@@ -853,7 +853,7 @@ if not unique_urls_flag:
         if "l" not in bswpohob :
             for param in params_1:
                 url_with_param = main_url + "?" + param + "=FUZZ"
-                unique_urls.add(url_with_param)
+                bambambam.add(url_with_param)
                 
         for param in params_2:
             param = param.replace("\n", "")
@@ -863,27 +863,27 @@ if not unique_urls_flag:
                 param = param + "="
             url_with_param = main_url + param + "FUZZ"
             url_with_param = url_with_param.replace("FUZZFUZZ","FUZZ")
-            unique_urls.add(url_with_param)
+            bambambam.add(url_with_param)
             
-    print("Total generated urls with different parameters: ",len(unique_urls))
+    print("Total generated urls with different parameters: ",len(bambambam))
     print("\nplease wait ! saving unique urls into disk ..")
     with open('xsslogabhi/unique_stats/'+fn+'_'+bswpohob+".txt",'w') as ID1:
         ID1.write("")
     with open('xsslogabhi/unique_stats/'+fn+'_'+bswpohob+".txt",'a') as ID1:
-        for unique_url in unique_urls:
+        for unique_url in bambambam:
             ID1.write(unique_url+ '\n')
     print("\n[*]Done saving ✅..")
             
 #__________________________________________________________________________   
-if len(custom_header)!=0:
-    headers_basic = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36','referer':'',custom_header[0]:custom_header[1]}
+if len(hdhdhdlolw)!=0:
+    headers_basic = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36','referer':'',hdhdhdlolw[0]:hdhdhdlolw[1]}
 else:
     headers_basic = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36','referer':''}
 headers=headers_basic
 #__________________________________________________________________________ 
 
 
-print("\nTotal loaded urls from disk for scan: ",len(unique_urls)-lolhahhah)
+print("\nTotal loaded urls from disk for scan: ",len(bambambam)-lolhahhah)
 count=0
 get_cookies_flag=True
 visited_netloc=""
@@ -892,7 +892,7 @@ visited_main_urls_reflection={}
 
 delay_time=0
 
-for url_for_fuzz in unique_urls:
+for url_for_fuzz in bambambam:
     count+=1    
     if count<=lolhahhah: # resuming count
         continue
@@ -1080,13 +1080,13 @@ for url_for_fuzz in unique_urls:
                 if ref_count==ref_count2:
                     print(cskdhbvksv+"no special reflections --> skipping")
                     
-                    if "parametersMax" not in paramdirectory and "403" not in str(getreq.status_code) and enable_sql:
+                    if "parametersMax" not in zigzigloldirctry and "403" not in str(getreq.status_code) and enable_sql:
                         PL1="' or\'\"'<abhi>"
                         PL2=" AS INJECTX WHERE 1=1 AND 1=1 <abhi>\"\"ab''ab"
                         if __name__ =="__main__":
                         # creating thread
-                            t1 = threading.Thread(target=my_function, args=(PL1,parameter))
-                            t2 = threading.Thread(target=my_function, args=(PL2,parameter))
+                            t1 = threading.Thread(target=iamabhishek, args=(PL1,parameter))
+                            t2 = threading.Thread(target=iamabhishek, args=(PL2,parameter))
                             t1.start()
                             t2.start()
                             t1.join()
@@ -1101,13 +1101,13 @@ for url_for_fuzz in unique_urls:
 
             #print(Back.BLACK +Fore.CYAN +"method:0 direct test...")
             #payload="78907890<abhi>\"\"09870987"
-            #my_function()
+            #iamabhishek()
             if single_mode:
                 print("\t -Testing Xss simple-")
                 PL1="78907890%3cabhi%3e%22%22ab''ab09870987"
                 PL2="%3cabhi%3e"
-                t1 = threading.Thread(target=my_function, args=(PL1,parameter,))
-                t2 = threading.Thread(target=my_function, args=(PL2,parameter,))
+                t1 = threading.Thread(target=iamabhishek, args=(PL1,parameter,))
+                t2 = threading.Thread(target=iamabhishek, args=(PL2,parameter,))
                 t1.start()
                 t2.start()
                 t1.join()
@@ -1128,13 +1128,13 @@ for url_for_fuzz in unique_urls:
                 if __name__ =="__main__":
                     # creating thread
 
-                    t1 = threading.Thread(target=my_function, args=(PL1,parameter,))
-                    t2 = threading.Thread(target=my_function, args=(PL2,parameter,))
-                    t3 = threading.Thread(target=my_function, args=(PL3,parameter,))
-                    t4 = threading.Thread(target=my_function, args=(PL4,parameter,))
-                    t5 = threading.Thread(target=my_function, args=(PL5,parameter,))
-                    t6 = threading.Thread(target=my_function, args=(PL6,parameter,))
-                    t7 = threading.Thread(target=my_function, args=(PL7,parameter,))
+                    t1 = threading.Thread(target=iamabhishek, args=(PL1,parameter,))
+                    t2 = threading.Thread(target=iamabhishek, args=(PL2,parameter,))
+                    t3 = threading.Thread(target=iamabhishek, args=(PL3,parameter,))
+                    t4 = threading.Thread(target=iamabhishek, args=(PL4,parameter,))
+                    t5 = threading.Thread(target=iamabhishek, args=(PL5,parameter,))
+                    t6 = threading.Thread(target=iamabhishek, args=(PL6,parameter,))
+                    t7 = threading.Thread(target=iamabhishek, args=(PL7,parameter,))
 
                     if thread_limit==7:
                         t1.start()
@@ -1233,13 +1233,13 @@ for url_for_fuzz in unique_urls:
                 if __name__ =="__main__":
                     # creating thread
 
-                    t1 = threading.Thread(target=my_function, args=(PL1,parameter,))
-                    t2 = threading.Thread(target=my_function, args=(PL2,parameter,))
-                    t3 = threading.Thread(target=my_function, args=(PL3,parameter,))
-                    t4 = threading.Thread(target=my_function, args=(PL4,parameter,))
-                    t5 = threading.Thread(target=my_function, args=(PL5,parameter,))
-                    t6 = threading.Thread(target=my_function, args=(PL6,parameter,))
-                    t7 = threading.Thread(target=my_function, args=(PL7,parameter,))
+                    t1 = threading.Thread(target=iamabhishek, args=(PL1,parameter,))
+                    t2 = threading.Thread(target=iamabhishek, args=(PL2,parameter,))
+                    t3 = threading.Thread(target=iamabhishek, args=(PL3,parameter,))
+                    t4 = threading.Thread(target=iamabhishek, args=(PL4,parameter,))
+                    t5 = threading.Thread(target=iamabhishek, args=(PL5,parameter,))
+                    t6 = threading.Thread(target=iamabhishek, args=(PL6,parameter,))
+                    t7 = threading.Thread(target=iamabhishek, args=(PL7,parameter,))
 
 
                     if thread_limit==7:
@@ -1338,14 +1338,14 @@ for url_for_fuzz in unique_urls:
 
                 if __name__ =="__main__":
                     # creating thread
-                    t1 = threading.Thread(target=my_function, args=(PL1,parameter,))
-                    t2 = threading.Thread(target=my_function, args=(PL2,parameter,))
-                    t3 = threading.Thread(target=my_function, args=(PL3,parameter,))
-                    t4 = threading.Thread(target=my_function, args=(PL4,parameter,))
-                    t5 = threading.Thread(target=my_function, args=(PL5,parameter,))
-                    t6 = threading.Thread(target=my_function, args=(PL6,parameter,))
-                    t7 = threading.Thread(target=my_function, args=(PL7,parameter,))
-                    t8 = threading.Thread(target=my_function, args=(PL8,parameter,))
+                    t1 = threading.Thread(target=iamabhishek, args=(PL1,parameter,))
+                    t2 = threading.Thread(target=iamabhishek, args=(PL2,parameter,))
+                    t3 = threading.Thread(target=iamabhishek, args=(PL3,parameter,))
+                    t4 = threading.Thread(target=iamabhishek, args=(PL4,parameter,))
+                    t5 = threading.Thread(target=iamabhishek, args=(PL5,parameter,))
+                    t6 = threading.Thread(target=iamabhishek, args=(PL6,parameter,))
+                    t7 = threading.Thread(target=iamabhishek, args=(PL7,parameter,))
+                    t8 = threading.Thread(target=iamabhishek, args=(PL8,parameter,))
 
 
                     if thread_limit==7:
@@ -1442,7 +1442,7 @@ for url_for_fuzz in unique_urls:
                         time.sleep(delay_time) # here sleep delay implemented according to 429 status
 
                 PL1="PGFiaGk+IiJhYicnIA=="
-                t1 = threading.Thread(target=my_function, args=(PL1,parameter,))
+                t1 = threading.Thread(target=iamabhishek, args=(PL1,parameter,))
                 t1.start()
                 t1.join()
 
@@ -1552,13 +1552,13 @@ for url_for_fuzz in unique_urls:
                 PL6="78907890${{7*7}}09870987"
                 PL7="78907890@(7%2b7)09870987"
 
-                t1 = threading.Thread(target=my_function_ssti, args=(PL1,))
-                t2 = threading.Thread(target=my_function_ssti, args=(PL2,))
-                t3 = threading.Thread(target=my_function_ssti, args=(PL3,))
-                t4 = threading.Thread(target=my_function_ssti, args=(PL4,))
-                t5 = threading.Thread(target=my_function_ssti, args=(PL5,))
-                t6 = threading.Thread(target=my_function_ssti, args=(PL6,))
-                t7 = threading.Thread(target=my_function_ssti, args=(PL7,))
+                t1 = threading.Thread(target=iamabhishek_ssti, args=(PL1,))
+                t2 = threading.Thread(target=iamabhishek_ssti, args=(PL2,))
+                t3 = threading.Thread(target=iamabhishek_ssti, args=(PL3,))
+                t4 = threading.Thread(target=iamabhishek_ssti, args=(PL4,))
+                t5 = threading.Thread(target=iamabhishek_ssti, args=(PL5,))
+                t6 = threading.Thread(target=iamabhishek_ssti, args=(PL6,))
+                t7 = threading.Thread(target=iamabhishek_ssti, args=(PL7,))
 
                 if thread_limit==7:
                     t1.start()
@@ -1647,10 +1647,10 @@ for url_for_fuzz in unique_urls:
 
             #print("method:15 unicoded \\u  :")
             #payload="78907890\\u003Cabhi\\u003E\\u0022\\u002209870987"
-            #my_function()
+            #iamabhishek()
 
 
-        elif paramdirectory!='parameters/parametersMax.txt' :
+        elif zigzigloldirctry!='parameters/parametersMax.txt' :
             print("  no reflective values found--> skipping..")
             
             if enable_sql and "403" not in str(getreq.status_code):
@@ -1659,9 +1659,9 @@ for url_for_fuzz in unique_urls:
                 PL3="%F0%92%80%80%3D%27%27%2C%F0%92%89%BA%3D%21%F0%92%80%80%2B\"\"ab''ab%2C%F0%92%80%83%3D%21%F0%92%89%BA%2B%F0%92%80%80%2C%F0%92%87%BA%3D%F0%92%80%80%2B%7B%7D%2C%F0%92%8C%90%3D%F0%92%89%BA%5B%F0%92%80%80%2B%2B%5D%2C%0A%F0%92%80%9F%3D%F0%92%89%BA%5B%F0%92%88%AB%3D%F0%92%80%80%5D%2C%F0%92%80%86%3D%2B%2B%F0%92%88%AB%2B%F0%92%80%80%2C%F0%92%81%B9%3D%F0%92%87%BA%5B%F0%92%88%AB%2B%F0%92%80%86%5D%2C%F0%92%89%BA%5B%F0%92%81%B9%2B%3D%F0%92%87%BA%5B%F0%92%80%80%5D%0A%2B%28%F0%92%89%BA%2E%F0%92%80%83%2B%F0%92%87%BA%29%5B%F0%92%80%80%5D%2B%F0%92%80%83%5B%F0%92%80%86%5D%2B%F0%92%8C%90%2B%F0%92%80%9F%2B%F0%92%89%BA%5B%F0%92%88%AB%5D%2B%F0%92%81%B9%2B%F0%92%8C%90%2B%F0%92%87%BA%5B%F0%92%80%80%5D%0A%2B%F0%92%80%9F%5D%5B%F0%92%81%B9%5D%28%F0%92%80%83%5B%F0%92%80%80%5D%2B%F0%92%80%83%5B%F0%92%88%AB%5D%2B%F0%92%89%BA%5B%F0%E1%A8%86%3D''%2C%E1%A8%8A%3D!%E1%A8%86%2B%E1%A8%86%2C%E1%A8%8E%3D!%E1%A8%8A%2B%E1%A8%86%2C%E1%A8%82%3D%E1%A8%86%2B%7B%7D%2C%E1%A8%87%3D%E1%A8%8A%5B%E1%A8%86%2B%2B%5D%2C%E1%A8%8B%3D%E1%A8%8A%5B%E1%A8%8F%3D%E1%A8%86%5D%2C%E1%A8%83%3D%2B%2B%E1%A8%8F%2B%E1%A8%86%2C%E1%A8%85%3D%E1%A8%82%5B%E1%A8%8F%2B%E1%A8%83%5D%2C%E1%A8%8A%5B%E1%A8%85%2B%3D%E1%A8%82%5B%E1%A8%86%5D%2B(%E1%A8%8A.%E1%A8%8E%2B%E1%A8%82)%5B%E1%A8%86%5D%2B%E1%A8%8E%5B%E1%A8%83%5D%2B%E1%A8%87%2B%E1%A8%8B%2B%E1%A8%8A%5B%E1%A8%8F%5D%2B%E1%A8%85%2B%E1%A8%87%2B%E1%A8%82%5B%E1%A8%86%5D%2B%E1%A8%8B%5D%5B%E1%A8%85%5D(%E1%A8%8E%5B%E1%A8%86%5D%2B%E1%A8%8E%5B%E1%A8%8F%5D%2B%E1%A8%8A%5B%E1%A8%83%5D%2B%E1%A8%8B%2B%E1%A8%87%2B%22(%E1%A8%86%92%80%86%5D%2B%F0%92%80%9F%2B%F0%92%8C%90%2B%22%28%F0%92%80%80%29%22%29%28%and %2522%2520%2521 %253cabhi%253e"
                 if __name__ =="__main__":
                     # creating thread
-                    t1 = threading.Thread(target=my_function, args=(PL1,parameter,))
-                    t2 = threading.Thread(target=my_function, args=(PL2,parameter,))
-                    t3 = threading.Thread(target=my_function, args=(PL3,parameter,))
+                    t1 = threading.Thread(target=iamabhishek, args=(PL1,parameter,))
+                    t2 = threading.Thread(target=iamabhishek, args=(PL2,parameter,))
+                    t3 = threading.Thread(target=iamabhishek, args=(PL3,parameter,))
                     t1.start()
                     time.sleep(delay_time) # here sleep delay implemented according to 429 status
                     t2.start()
