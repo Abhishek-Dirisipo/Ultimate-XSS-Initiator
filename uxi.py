@@ -354,7 +354,7 @@ def write_error():
 #**************************************function 3 rce collaborator- just get request ***********************************
 def hfhfhfrce(payload):
     print("[*]command Payload->",payload)
-    req=requests.get(url_for_fuzz.replace("FUZZ",payload),headers=headers,cookies=cookies,timeout=30)
+    req=requests.get(urlssszzz.replace("FUZZ",payload),headers=headers,cookies=cookies,timeout=30)
 
 #******************************************************************************************************************
 
@@ -366,9 +366,9 @@ def hfhfhfrce(payload):
 
 def iamabhishek_ssti(payload):
     print("[*]ssti Payload->",payload)
-    req=requests.get(url_for_fuzz.replace("FUZZ",payload),headers=headers,cookies=cookies,timeout=50)
+    req=requests.get(urlssszzz.replace("FUZZ",payload),headers=headers,cookies=cookies,timeout=50)
     req1=req #modified
-#                req1=requests.post(url_for_fuzz.replace("FUZZ",payload),headers=headers,cookies=cookies)
+#                req1=requests.post(urlssszzz.replace("FUZZ",payload),headers=headers,cookies=cookies)
 
     #***.    printing reflections on o/p screen get  *****
     temp=req.text
@@ -386,19 +386,19 @@ def iamabhishek_ssti(payload):
                     if "49" in op or "77777" in op or "7 7 7 7 7" in op:
                         print(Fore.WHITE +" ⭐️⭐️⭐️vulnerable to SSTI !",payload)
                         with open('xsslogabhi/ssti_logs.txt','a') as f1:
-                            f1.write('\n'+' * '+url_for_fuzz.replace("FUZZ",payload))
+                            f1.write('\n'+' * '+urlssszzz.replace("FUZZ",payload))
                     if '7' not in op:
                         print(Fore.WHITE +" ⭐️ may vulnerable to SSTI !",payload)
                         with open('xsslogabhi/ssti_logs2.txt','a') as f1:
-                            f1.write('\n'+' * '+url_for_fuzz.replace("FUZZ",payload))
+                            f1.write('\n'+' * '+urlssszzz.replace("FUZZ",payload))
 #******************************************************************************************************************
 #**************************************function 5 xss owap payload detection ***************************************
 
 def dlolddowaspolol(payload):
     print("[*] Payload->",payload)
-    req=requests.get(url_for_fuzz.replace("FUZZ",payload),headers=headers,cookies=cookies,timeout=30)
+    req=requests.get(urlssszzz.replace("FUZZ",payload),headers=headers,cookies=cookies,timeout=30)
     req1=req #modified
-#                req1=requests.post(url_for_fuzz.replace("FUZZ",payload),headers=headers,cookies=cookies)
+#                req1=requests.post(urlssszzz.replace("FUZZ",payload),headers=headers,cookies=cookies)
 
     #***.    printing reflections on o/p screen get  *****
     temp=req.text
@@ -415,16 +415,16 @@ def dlolddowaspolol(payload):
                     if "<>" in op:
                         print(Fore.MAGENTA +" ⭐️⭐️ xss filter bypass by owasp payloads ! <> ",payload)
                         with open('xsslogabhi/xss_owasplogs.txt','a') as f1:
-                            f1.write('\n'+' * '+url_for_fuzz.replace("FUZZ",payload))
+                            f1.write('\n'+' * '+urlssszzz.replace("FUZZ",payload))
                     if ">" in op or "<" in op:
                         print(Fore.WHITE +" ⭐️ xss filter bypass by owasp payloads ! < or >",payload)
                         with open('xsslogabhi/xss_owasplogs2.txt','a') as f1:
-                            f1.write('\n'+' * '+url_for_fuzz.replace("FUZZ",payload))
+                            f1.write('\n'+' * '+urlssszzz.replace("FUZZ",payload))
                             
                     if "><" in op:
                         print(Fore.MAGENTA +" ⭐️ xss filter bypass by owasp payloads >< !",payload)
                         with open('xsslogabhi/xss_owasplogs3.txt','a') as f1:
-                            f1.write('\n'+' * '+url_for_fuzz.replace("FUZZ",payload))
+                            f1.write('\n'+' * '+urlssszzz.replace("FUZZ",payload))
 #******************************************************************************************************************
 
 #*************************************************** header injection ***********************************************************
@@ -507,12 +507,12 @@ def iamabhishek(payload,parameter):
     print("[*] Payload->",payload)
 
     
-    req=requests.get(url_for_fuzz.replace("FUZZ",payload),headers=headers,cookies=cookies,timeout=50)
+    req=requests.get(urlssszzz.replace("FUZZ",payload),headers=headers,cookies=cookies,timeout=50)
     
     #************* post 
     if enable_post:
         post_parameter=parameter.replace("?","").replace("=","")
-        post_target=url_for_fuzz.replace("?","#")
+        post_target=urlssszzz.replace("?","#")
 
         req1=requests.post(post_target,data={post_parameter:payload},json={post_parameter:payload},headers=headers,cookies=cookies,timeout=50) #for post
     else:
@@ -526,7 +526,7 @@ def iamabhishek(payload,parameter):
     if "429" in str(req.status_code):
         print("\tserver is blocking requests..delaying 60 sec")
         time.sleep(60)
-#                req1=requests.post(url_for_fuzz.replace("FUZZ",payload),headers=headers,cookies=cookies)
+#                req1=requests.post(urlssszzz.replace("FUZZ",payload),headers=headers,cookies=cookies)
 
 
     #***.    printing reflections on o/p screen get + double and single quote recognition *****
@@ -555,14 +555,14 @@ def iamabhishek(payload,parameter):
                 if c>2:
                     print("\033[36m" + "Double quotes vulnerable:" + "\033[0m","")
                     with open('xsslogabhi/xsslogDquotes.txt','a') as f1:
-                        f1.write('\n'+' * '+url_for_fuzz.replace("FUZZ",payload))
+                        f1.write('\n'+' * '+urlssszzz.replace("FUZZ",payload))
 
             if "''ab" in script_content or "''AB" in script_content:
                 c=script_content.count("'")
                 if c>2:
                     print("\033[36m" + "Single quotes vulnerable:" + "\033[0m","")
                     with open('xsslogabhi/xsslogSquotes.txt','a') as f1:
-                        f1.write('\n'+' * '+url_for_fuzz.replace("FUZZ",payload))
+                        f1.write('\n'+' * '+urlssszzz.replace("FUZZ",payload))
 
     #******** post reflections ****************
     
@@ -592,14 +592,14 @@ def iamabhishek(payload,parameter):
                     if c>2:
                         print("\033[36m" + "post Double quotes vulnerable:" + "\033[0m","")
                         with open('xsslogabhi/xsslogpostDquotes.txt','a') as f1:
-                            f1.write('\n'+' * '+url_for_fuzz.replace("FUZZ",payload))
+                            f1.write('\n'+' * '+urlssszzz.replace("FUZZ",payload))
 
                 if "''ab" in script_content or "''AB" in script_content:
                     c=script_content.count("'")
                     if c>2:
                         print("\033[36m" + "post Single quotes vulnerable:" + "\033[0m","")
                         with open('xsslogabhi/xsslogpostSquotes.txt','a') as f1:
-                            f1.write('\n'+' * '+url_for_fuzz.replace("FUZZ",payload))
+                            f1.write('\n'+' * '+urlssszzz.replace("FUZZ",payload))
                         
                         
     p="<abhi>\"\""
@@ -616,19 +616,19 @@ def iamabhishek(payload,parameter):
             print(Fore.RED +"  ⭐️ ⭐️ ⭐️  reflections found in get for:",payload,'\n')
             f=1
             with open('xsslogabhi/xsslog.txt','a') as f1:
-                f1.write('\n'+' * * * '+url_for_fuzz.replace("FUZZ",payload))
+                f1.write('\n'+' * * * '+urlssszzz.replace("FUZZ",payload))
 
         elif "<abhi>\\\"\\\"" in req.text or "<ABHI>\\\"\\\"" in req.text or "<Abhi>\\\"\\\"" in req.text:
             print(Fore.RED +"  ⭐️ ⭐️ ⭐️  reflections found in get for:",payload,'\n')
             f=1
             with open('xsslogabhi/xsslog.txt','a') as f1:
-                f1.write('\n'+' * * * '+url_for_fuzz.replace("FUZZ",payload))
+                f1.write('\n'+' * * * '+urlssszzz.replace("FUZZ",payload))
 
         elif "%3cabhi%3e\"\"" in req.text or "%3CABHI%3E\"\"" in req.text or "%3cabhi%3e\"\"" in req.text or "%25%3cabhi%25%33\"\"" in req.text or "%25%3CABHI%25%3E\"\"" in req.text or "%25%3cAbhi%25%3e\"\"" in req.text:
             print(Fore.RED +"  ⭐️ ⭐️ ⭐️  reflections found in get for:",payload,'\n')
             f=1
             with open('xsslogabhi/xsslogDquotes.txt','a') as f1:
-                f1.write('\n'+' * * * '+url_for_fuzz.replace("FUZZ",payload))
+                f1.write('\n'+' * * * '+urlssszzz.replace("FUZZ",payload))
 
 
         else:
@@ -639,7 +639,7 @@ def iamabhishek(payload,parameter):
                 f=1
                  #saving results for **
                 with open('xsslogabhi/xsslog2.txt','a') as f1:
-                    f1.write('\n'+' * * '+url_for_fuzz.replace("FUZZ",payload))
+                    f1.write('\n'+' * * '+urlssszzz.replace("FUZZ",payload))
 
             else:
             #************* GET ********
@@ -649,7 +649,7 @@ def iamabhishek(payload,parameter):
 
                     #saving results for *
                     with open('xsslogabhi/xsslog2.txt','a') as f1:
-                        f1.write('\n'+' * '+url_for_fuzz.replace("FUZZ",payload))
+                        f1.write('\n'+' * '+urlssszzz.replace("FUZZ",payload))
 
          #*************************** low alerts  *******************************
 
@@ -658,13 +658,13 @@ def iamabhishek(payload,parameter):
                     f=1
                     #saving results for *
                     with open('xsslogabhi/xsslog3.txt','a') as f1:
-                        f1.write('\n'+' * '+url_for_fuzz.replace("FUZZ",payload))
+                        f1.write('\n'+' * '+urlssszzz.replace("FUZZ",payload))
                 elif "<abhi" in req.text or "<ABHI" in req.text or "<Abhi" in req.text:
                     print(Fore.WHITE +"   ⭐️  get reflections abhi\" only..",payload)
                     f=1
                     #saving results for *
                     with open('xsslogabhi/xsslog3.txt','a') as f1:
-                        f1.write('\n'+' * '+url_for_fuzz.replace("FUZZ",payload))     
+                        f1.write('\n'+' * '+urlssszzz.replace("FUZZ",payload))     
                         
                         
     #*************** POST *************************************************************************************
@@ -677,19 +677,19 @@ def iamabhishek(payload,parameter):
             print(Fore.RED +"  ⭐️ ⭐️ ⭐️  reflections found in get for:",payload,'\n')
             f=1
             with open('xsslogabhi/xsslogpost.txt','a') as f1:
-                f1.write('\n'+' * * * '+url_for_fuzz.replace("FUZZ",payload))
+                f1.write('\n'+' * * * '+urlssszzz.replace("FUZZ",payload))
 
         elif "<abhi>\\\"\\\"" in req1.text or "<ABHI>\\\"\\\"" in req1.text or "<Abhi>\\\"\\\"" in req1.text:
             print(Fore.RED +"  ⭐️ ⭐️ ⭐️  reflections found in get for:",payload,'\n')
             f=1
             with open('xsslogabhi/xsslogpost.txt','a') as f1:
-                f1.write('\n'+' * * * '+url_for_fuzz.replace("FUZZ",payload))
+                f1.write('\n'+' * * * '+urlssszzz.replace("FUZZ",payload))
 
         elif "%3cabhi%3e\"\"" in req1.text or "%3CABHI%3E\"\"" in req1.text or "%3cabhi%3e\"\"" in req1.text or "%25%3cabhi%25%33\"\"" in req1.text or "%25%3CABHI%25%3E\"\"" in req1.text or "%25%3cAbhi%25%3e\"\"" in req1.text:
             print(Fore.RED +"  ⭐️ ⭐️ ⭐️  reflections found in get for:",payload,'\n')
             f=1
             with open('xsslogabhi/xsslogpostDquotes.txt','a') as f1:
-                f1.write('\n'+' * * * '+url_for_fuzz.replace("FUZZ",payload))
+                f1.write('\n'+' * * * '+urlssszzz.replace("FUZZ",payload))
 
 
         else:
@@ -700,7 +700,7 @@ def iamabhishek(payload,parameter):
                 f=1
                  #saving results for **
                 with open('xsslogabhi/xsslogpost2.txt','a') as f1:
-                    f1.write('\n'+' * * '+url_for_fuzz.replace("FUZZ",payload))
+                    f1.write('\n'+' * * '+urlssszzz.replace("FUZZ",payload))
 
             else:
             #************* GET ********
@@ -710,7 +710,7 @@ def iamabhishek(payload,parameter):
 
                     #saving results for *
                     with open('xsslogabhi/xsslogpost2.txt','a') as f1:
-                        f1.write('\n'+' * '+url_for_fuzz.replace("FUZZ",payload))
+                        f1.write('\n'+' * '+urlssszzz.replace("FUZZ",payload))
 
          #*************************** low alerts  *******************************
 
@@ -719,13 +719,13 @@ def iamabhishek(payload,parameter):
                     f=1
                     #saving results for *
                     with open('xsslogabhi/xsslogpost3.txt','a') as f1:
-                        f1.write('\n'+' * '+url_for_fuzz.replace("FUZZ",payload))
+                        f1.write('\n'+' * '+urlssszzz.replace("FUZZ",payload))
                 elif "<abhi" in req1.text or "<ABHI" in req1.text or "<Abhi" in req1.text:
                     print(Fore.WHITE +"   ⭐️  get reflections abhi\" only..",payload)
                     f=1
                     #saving results for *
                     with open('xsslogabhi/xsslogpost3.txt','a') as f1:
-                        f1.write('\n'+' * '+url_for_fuzz.replace("FUZZ",payload))                            
+                        f1.write('\n'+' * '+urlssszzz.replace("FUZZ",payload))                            
     
 
             
@@ -739,20 +739,20 @@ def iamabhishek(payload,parameter):
         if sql_count1<sql_count2 and "malformed" not in temp and "blocked" not in temp:
 
             print("....:testing sql again")
-            req=requests.get(url_for_fuzz.replace("FUZZ",payload),headers=headers,cookies=cookies)
+            req=requests.get(urlssszzz.replace("FUZZ",payload),headers=headers,cookies=cookies)
             temp=req.text
             sql_count2=temp.count("sql")+temp.count("SQL")+temp.count("Sql")
 
             if sql_count1<sql_count2:
                 print("....:reverifying sql")
-                req=requests.get(url_for_fuzz.replace("FUZZ",payload),headers=headers,cookies=cookies)
+                req=requests.get(urlssszzz.replace("FUZZ",payload),headers=headers,cookies=cookies)
                 temp=req.text
                 sql_count4=temp.count("sql")+temp.count("SQL")+temp.count("Sql")
                 #print("      sql:",sql_count1,"&",sql_count4) #-------
                 if sql_count1<sql_count4:
                     print(Fore.YELLOW +"*⚠️ contains sql word/query.. ⚠️ ",payload)
                     with open('xsslogabhi/sql_log.txt','a') as f1:
-                        f1.write('\n'+' * '+url_for_fuzz.replace("FUZZ",payload))
+                        f1.write('\n'+' * '+urlssszzz.replace("FUZZ",payload))
                         f=1 #flag
 
 
@@ -763,21 +763,21 @@ def iamabhishek(payload,parameter):
         if sql_count1<sql_count2 and "malformed" not in temp and "blocked" not in temp:
 
             print("....:testing sql again")
-            req=requests.get(url_for_fuzz.replace("FUZZ",payload),headers=headers,cookies=cookies)
+            req=requests.get(urlssszzz.replace("FUZZ",payload),headers=headers,cookies=cookies)
             temp=req1.text
 
             sql_count2=temp.count("sql")+temp.count("SQL")+temp.count("Sql")
 
             if sql_count1<sql_count2:
                 print("....:reverifying sql")
-                req=requests.get(url_for_fuzz.replace("FUZZ",payload),headers=headers,cookies=cookies)
+                req=requests.get(urlssszzz.replace("FUZZ",payload),headers=headers,cookies=cookies)
                 temp=req1.text
                 sql_count4=temp.count("sql")+temp.count("SQL")+temp.count("Sql")
                 #print("      sql:",sql_count1,"&",sql_count4) #-------
                 if sql_count1<sql_count4:
                     print(Fore.YELLOW +"*⚠️ contains sql word/query.. ⚠️ ",payload)
                     with open('xsslogabhi/sql_logpost.txt','a') as f1:
-                        f1.write('\n'+' * '+url_for_fuzz.replace("FUZZ",payload))
+                        f1.write('\n'+' * '+urlssszzz.replace("FUZZ",payload))
                         f=1 #flag
 
 
@@ -892,21 +892,21 @@ visited_main_urls_reflection={}
 
 delay_time=0
 
-for url_for_fuzz in bambambam:
+for urlssszzz in bambambam:
     count+=1    
     if count<=lolhahhah: # resuming count
         continue
             
-    url_for_fuzz=url_for_fuzz.replace("\n","")
+    urlssszzz=urlssszzz.replace("\n","")
     
     time.sleep(delay_time) # here sleep delay implemented according to 429 status
     
-    print(iwgiygwi+"[",count,"]:",eybrebr+url_for_fuzz)
+    print(iwgiygwi+"[",count,"]:",eybrebr+urlssszzz)
 #___________________________________________________________________________________________________________________________________________________ 
 #____________________________________________________________________________________________________________________________________________________ 
 #____________________________________________________________________________________________________________________________________________________ 
 # getting cookies based on netloc
-    parsed_url = urlparse(url_for_fuzz)
+    parsed_url = urlparse(urlssszzz)
     netloc = parsed_url.netloc
     url_path=parsed_url.path
     main_url = parsed_url.scheme + "://" + parsed_url.netloc + url_path
@@ -920,7 +920,7 @@ for url_for_fuzz in bambambam:
         print("current netloc",visited_netloc)
         try:
             ##setting cookies
-            response = requests.get(url_for_fuzz, headers=headers_basic, timeout=50)
+            response = requests.get(urlssszzz, headers=headers_basic, timeout=50)
             # To get the cookies as a dictionary:
             cookies = response.cookies
             cookies= cookies.get_dict()
@@ -968,7 +968,7 @@ for url_for_fuzz in bambambam:
         
         ##setting cookies
         try:
-            response = requests.get(url_for_fuzz, headers=headers_basic, timeout=50)
+            response = requests.get(urlssszzz, headers=headers_basic, timeout=50)
         # To get the cookies as a dictionary:
             cookies = response.cookies
         except:
@@ -976,7 +976,7 @@ for url_for_fuzz in bambambam:
             
     try:
         
-        getreq=requests.get(url_for_fuzz.replace("FUZZ","FUZZ>"),headers=headers,cookies=cookies,timeout=30)
+        getreq=requests.get(urlssszzz.replace("FUZZ","FUZZ>"),headers=headers,cookies=cookies,timeout=30)
 
         post_parameter=parameter.replace("?","").replace("=","")
         
@@ -1016,15 +1016,15 @@ for url_for_fuzz in bambambam:
 #		********. ref finder.. in case of cache poisioning ***********
 
         if "FUZZ>" in temp or "fuzz>" in temp or "Fuzz>" in temp:
-            print(Fore.MAGENTA +"  ⭐️ ⭐️ initial reflections fuzz> found ! for:\n",url_for_fuzz.replace("FUZZ","FUZZ>"))
+            print(Fore.MAGENTA +"  ⭐️ ⭐️ initial reflections fuzz> found ! for:\n",urlssszzz.replace("FUZZ","FUZZ>"))
             with open('xsslogabhi/init_bypass.txt','a') as f1:
-                f1.write('\n'+' * '+url_for_fuzz.replace("FUZZ","FUZZ>"))
+                f1.write('\n'+' * '+urlssszzz.replace("FUZZ","FUZZ>"))
                 f=1
                 
         if "FUZZ>" in temp2 or "fuzz>" in temp2 or "Fuzz>" in temp2:
-            print(Fore.MAGENTA +"  ⭐️ ⭐️ initial reflections fuzz> found ! for:\n",url_for_fuzz.replace("FUZZ","FUZZ>"))
+            print(Fore.MAGENTA +"  ⭐️ ⭐️ initial reflections fuzz> found ! for:\n",urlssszzz.replace("FUZZ","FUZZ>"))
             with open('xsslogabhi/init_bypasspost.txt','a') as f1:
-                f1.write('\n'+' * '+url_for_fuzz.replace("FUZZ","FUZZ>"))
+                f1.write('\n'+' * '+urlssszzz.replace("FUZZ","FUZZ>"))
                 f=1                        
 
         #************** href reflections ****************
@@ -1036,13 +1036,13 @@ for url_for_fuzz in bambambam:
         #get
         if  payload1 in getreq.text or payload2 in getreq.text or payload3 in getreq.text or payload4 in getreq.text:
             with open('xsslogabhi/xssloghref.txt','a') as f1:
-                f1.write('\n'+' * '+url_for_fuzz.replace("FUZZ",payload))
+                f1.write('\n'+' * '+urlssszzz.replace("FUZZ",payload))
                 f=1
 
         #post        
         if  payload1 in postreq.text or payload2 in postreq.text or payload3 in postreq.text or payload4 in postreq.text:
             with open('xsslogabhi/xsslogposthref.txt','a') as f1:
-                f1.write('\n'+' * '+url_for_fuzz.replace("FUZZ",payload))
+                f1.write('\n'+' * '+urlssszzz.replace("FUZZ",payload))
                 f=1
                 
 
@@ -1812,7 +1812,7 @@ for url_for_fuzz in bambambam:
 
             
             with open('xsslogabhi/temp_stats/'+str(ID)+'.abhi','a') as ID2:
-                ID2.write("\n"+str(count)+"- "+str(url_for_fuzz))
+                ID2.write("\n"+str(count)+"- "+str(urlssszzz))
 
     except requests.exceptions.RequestException as cE:
         try:
