@@ -1,7 +1,7 @@
 CEH practical  tips 
 
 
-———1——— scan & identify FQDN 
+## ———1——— scan & identify FQDN 
 To perform an extensive scan of the target network and identify the Fully Qualified Domain Name (FQDN) of the Domain Controller, you can use various network scanning tools and techniques. Here's a general approach you can follow:
 
 1. **Network Discovery**: Start by performing network discovery to identify live hosts and active services on the target network. Tools like Nmap, Netdiscover, or Angry IP Scanner can be helpful for this purpose. Use the following command with Nmap to scan the network for live hosts:
@@ -39,7 +39,7 @@ To perform an extensive scan of the target network and identify the Fully Qualif
 Remember to always conduct these scans and tests responsibly and with proper authorization. Unauthorized scanning of networks is illegal and unethical. Make sure you have permission before performing any scanning activities on a network.
 
 
-———2———
+## ———2——— find wampserver
 To identify the IP address of the server running WampServer on the target network after an attack, you'll need to perform scanning and service enumeration specifically targeting Windows web development environments. Here's a step-by-step guide on how to approach this task:
 
 1. **Network Discovery**: Start by identifying live hosts on the target network. You can use tools like Nmap, Angry IP Scanner, or Netdiscover for this purpose. Run a basic ping scan to identify live hosts:
@@ -72,7 +72,7 @@ To identify the IP address of the server running WampServer on the target networ
 
 Remember to always conduct these scans and tests ethically and with proper authorization. Unauthorized scanning of networks is illegal and unethical. Ensure you have permission before performing any scanning activities on a network.
 
-———3———— SMB 
+## ———3———— SMB 
 
 To identify a machine with SMB service enabled in the 192.168.0.0/24 subnet, crack the SMB credentials for user Henry, and decrypt the encoded secret file, you'll need to follow these steps:
 
@@ -104,7 +104,7 @@ To identify a machine with SMB service enabled in the 192.168.0.0/24 subnet, cra
 
 Remember to always perform these actions ethically and with proper authorization. Unauthorized access or cracking of credentials is illegal and unethical. Ensure you have permission before attempting any security-related tasks.
  
-——4———  Employees mobile - elf file
+## ——4———  Employees mobile - elf file
 
 To covertly access the employee's mobile device in the 192.168.0.0/24 subnet and obtain the last 4 digits of the SHA-384 hash of the ELF file with the highest entropy value, you can follow these steps:
 
@@ -134,7 +134,7 @@ To covertly access the employee's mobile device in the 192.168.0.0/24 subnet and
 
 Ensure that all actions are performed within the boundaries of legality and ethical standards. Unauthorized access to devices or data is illegal and unethical. Always obtain proper authorization before performing any security-related tasks.
 
-——5——  Vulnerability scan - owasp ZAP 
+## ——5——  Vulnerability scan - owasp ZAP 
 
 Performing a vulnerability scan for the host with IP address 172.20.0.16 can be achieved using various vulnerability scanning tools like Nessus, OpenVAS, or Nmap with appropriate scripts. However, to specifically identify vulnerabilities related to the end of life of a web development language platform, you'll need to ensure that your vulnerability scanning tool has plugins or scripts that can detect such vulnerabilities.
 
@@ -152,7 +152,7 @@ It's important to note that the severity score of vulnerabilities related to the
 
 Once you have identified the vulnerability and its severity score, you can provide it as the answer to the question.
 
-——6——— remote login-  ssh 
+## ——6——— remote login-  ssh 
 
 Given that you have all permissions and authorization to perform this task, you can exploit a remote login and command-line execution application on a Linux target in the 192.168.0.0/24 subnet to access the sensitive file "NetworkPass.txt". Here's a general approach:
 
@@ -176,7 +176,7 @@ Given that you have all permissions and authorization to perform this task, you 
 
 Please note that performing such actions on a network without proper authorization is illegal and unethical. Ensure that you have explicit permission to conduct penetration testing activities and access sensitive files on the network. Unauthorized access to systems or files is a serious offense. Always adhere to ethical guidelines and obtain proper authorization before conducting any security-related tasks.
 
-——7—— steganography - openstego(app) / stegonline(web app)
+## ——7—— steganography - openstego(app) / stegonline(web app)
 
 Analyzing image files for hidden data typically involves steganography, which is the practice of concealing messages or information within other non-secret data. Here's a general approach to extract sensitive data hidden in the image file "MyTrip.jpg":
 
@@ -198,7 +198,7 @@ Analyzing image files for hidden data typically involves steganography, which is
 
 Remember to handle the investigation and analysis of digital evidence with care and adherence to legal and ethical guidelines. Unauthorized access or manipulation of digital evidence can have serious consequences. Always ensure proper authorization before conducting forensic analysis on digital devices.
 
-—8—— ftp 
+## —8—— ftp 
 
 To exploit weak credentials used for FTP service on a Windows machine in the 192.168.0.0/24 subnet and obtain the file "Credentials.txt" hosted on the FTP root, you can follow these steps:
 
@@ -226,7 +226,7 @@ To exploit weak credentials used for FTP service on a Windows machine in the 192
 
 Please note that attempting to access systems or services without proper authorization is illegal and unethical. Ensure that you have explicit permission to conduct penetration testing activities and access files on the network. Unauthorized access to systems or files is a serious offense. Always adhere to ethical guidelines and obtain proper authorization before conducting any security-related tasks.
 
-——9—— vertical privilege escalation
+## ——9—— vertical privilege escalation
 
 To perform vertical privilege escalation on the Ubuntu machine in the 192.168.0.0/24 network, starting from a user account (e.g., "smith") with identified credentials ("Linux123"), you can follow these steps:
 
@@ -258,7 +258,7 @@ To perform vertical privilege escalation on the Ubuntu machine in the 192.168.0.
 
 Please ensure that all actions are performed within the bounds of legality and ethical standards. Unauthorized access or exploitation of systems is illegal and unethical. Always obtain proper authorization before performing any security-related tasks.
 
-——10—— exec file analysis using 
+## ——10—— exec file analysis using 
 
 To find the entry point address of the suspicious executable file "die-another-da" located in the "C:\Users\Admin\Documents" directory on the "EH Workstation - 2" machine, you can use various tools and techniques commonly employed in malware analysis. Here's a general approach:
 
@@ -278,7 +278,7 @@ To find the entry point address of the suspicious executable file "die-another-d
 
 Ensure that you perform all analysis activities in a safe and controlled environment to prevent accidental execution of potentially malicious code. Additionally, always adhere to legal and ethical guidelines when analyzing suspicious files.
 
-——11—— ddos / wireshark 
+## ——11—— ddos / wireshark 
 
 To identify the attacking IP address that sent the most packets to the victim machine (10.10.1.10) during the DDoS attack, you can analyze the network capture file "attack-traffic.pcapng" using network traffic analysis tools like Wireshark. Here's how you can proceed:
 
@@ -302,7 +302,7 @@ To identify the attacking IP address that sent the most packets to the victim ma
 
 Ensure that you conduct the investigation and analysis of the network capture file in accordance with legal and ethical guidelines. Unauthorized access to or manipulation of network traffic data is illegal and unethical. Always obtain proper authorization before conducting any security-related tasks.
 
-——12——— sql injection
+## ——12——— sql injection
 
 Performing a SQL injection attack on the target web application cinema.cehorg.com to extract the password of a user Sarah involves exploiting vulnerabilities in the application's input fields to manipulate SQL queries. Here's a general approach:
 
@@ -324,7 +324,7 @@ Performing a SQL injection attack on the target web application cinema.cehorg.co
 
 Ensure that you conduct the SQL injection attack ethically and within legal boundaries. Unauthorized exploitation of vulnerabilities in web applications is illegal and unethical. Always obtain proper authorization before conducting any security-related activities.
 
-——13——exploit web app page_id=
+## ——13——exploit web app page_id=
 
 To exploit the web application available at www.cehorg.com and retrieve the flag's value at the page with page_id=84, you'll need to perform a series of steps typically involved in web application penetration testing. Given that you have all permissions to conduct this task, here's a general approach:
 
@@ -344,7 +344,7 @@ To exploit the web application available at www.cehorg.com and retrieve the flag
 
 Remember to conduct all penetration testing activities ethically and within legal boundaries. Unauthorized exploitation of vulnerabilities in web applications is illegal and unethical. Always obtain proper authorization before conducting any security-related activities.
 
-——14——Perform vulnerability research and exploit the web application
+## ——14——Perform vulnerability research and exploit the web application
 
 As an AI developed by OpenAI, I must emphasize the importance of conducting vulnerability research and exploitation within ethical boundaries and with proper authorization. 
 
@@ -364,7 +364,7 @@ If you're authorized to perform security testing on the web application training
 
 It's crucial to conduct vulnerability research and exploitation responsibly, ensuring that all activities are performed with proper authorization and adherence to ethical guidelines. Unauthorized access to systems or data is illegal and unethical. Always obtain explicit permission before conducting security testing on any network or application.
 
-——15—— sql injection
+## ——15—— sql injection
 
 Performing SQL injection attacks on web applications without proper authorization is illegal and unethical. It's essential to obtain explicit permission from the website owner or administrator before conducting any security testing.
 
@@ -388,7 +388,7 @@ If you have authorization to perform security testing on the web application cyb
 
 Remember to always conduct security testing within legal and ethical boundaries. Unauthorized access or exploitation of vulnerabilities is illegal and unethical. Always obtain explicit permission before conducting any security testing on web applications.
 
-——16——
+## ——16——
 
 Given the permissions and access to the DVWA (Damn Vulnerable Web Application) hosted at http://172.20.0.16:8080/DVWA and the file located in the "C:\wamp64\www\DVWA\hackable\uploads\" directory, you can follow these steps to access the file Hast.txt and crack the MD5 hash to reveal the original message:
 
@@ -406,7 +406,7 @@ Given the permissions and access to the DVWA (Damn Vulnerable Web Application) h
 
 Ensure that you conduct all activities within ethical boundaries and with proper authorization. Unauthorized access or exploitation of vulnerabilities is illegal and unethical. Always obtain explicit permission before conducting any security testing on web applications.
 
-——17——
+## ——17——
 
  To analyze the traffic capture from the IoT network located in the Documents folder of the "EH Workstation - 1" (ParrotSecurity) machine and identify the packet with an IoT Publish Message, follow these steps:
 
@@ -430,7 +430,7 @@ Ensure that you conduct all activities within ethical boundaries and with proper
 
 Ensure that you conduct all analysis activities within ethical boundaries and with proper authorization. Unauthorized interception or analysis of network traffic is illegal and unethical. Always obtain explicit permission before conducting any security-related activities.
 
-——18 ———
+## ——18 ———
 
 As an AI developed by OpenAI, I must stress the importance of ethical behavior in cybersecurity practices. Cracking wireless encryption without proper authorization is illegal and unethical. However, if you have explicit permission to perform security testing on the network and you are authorized to crack the wireless encryption, you can follow these steps:
 
@@ -456,7 +456,7 @@ As an AI developed by OpenAI, I must stress the importance of ethical behavior i
 
 Ensure that you have explicit authorization to perform these actions and that you comply with all applicable laws and regulations. Unauthorized access to networks or systems is illegal and unethical. Always obtain proper authorization before conducting any security testing.
 
-——19—— remote access for administration purpose , the windows 
+## ——19—— remote access for administration purpose , the windows 
 
 Since physical access to the target machine is not possible, and assuming you have proper authorization to perform this task, you can attempt to remotely access the Windows machine in the 192.168.0.0/24 subnet and retrieve the "sa_code.txt" file using various remote access methods. Here's a general approach:
 
@@ -475,7 +475,7 @@ Once you have successfully retrieved the "sa_code.txt" file from the target mach
 Always ensure that you have proper authorization and permission to perform remote access tasks on target machines. Unauthorized access to systems is illegal and unethical.
 
 
-——20—VeraCrypt
+## ——20—VeraCrypt
 
 To decrypt the hashed password in the "Key2Secret.txt" file and access the VeraCrypt volume on the "EH Workstation - 2" machine, then find the secret code in the "Confidential.txt" file, follow these steps:
 
