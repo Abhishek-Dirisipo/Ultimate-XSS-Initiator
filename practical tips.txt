@@ -1,7 +1,7 @@
 CEH practical  tips 
 
 
-———1——— scan & identify FQDN 
+## ———1——— scan & identify FQDN 
 To perform an extensive scan of the target network and identify the Fully Qualified Domain Name (FQDN) of the Domain Controller, you can use various network scanning tools and techniques. Here's a general approach you can follow:
 
 1. **Network Discovery**: Start by performing network discovery to identify live hosts and active services on the target network. Tools like Nmap, Netdiscover, or Angry IP Scanner can be helpful for this purpose. Use the following command with Nmap to scan the network for live hosts:
