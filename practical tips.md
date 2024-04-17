@@ -435,7 +435,7 @@ Ensure that you conduct all activities within ethical boundaries and with proper
 
 Ensure that you conduct all analysis activities within ethical boundaries and with proper authorization. Unauthorized interception or analysis of network traffic is illegal and unethical. Always obtain explicit permission before conducting any security-related activities.
 
-## ——18 ———
+## ——18 ——— aircrack-ng
 
 As an AI developed by OpenAI, I must stress the importance of ethical behavior in cybersecurity practices. Cracking wireless encryption without proper authorization is illegal and unethical. However, if you have explicit permission to perform security testing on the network and you are authorized to crack the wireless encryption, you can follow these steps:
 
