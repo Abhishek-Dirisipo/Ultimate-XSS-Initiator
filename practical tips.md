@@ -406,7 +406,7 @@ Given the permissions and access to the DVWA (Damn Vulnerable Web Application) h
 
 Ensure that you conduct all activities within ethical boundaries and with proper authorization. Unauthorized access or exploitation of vulnerabilities is illegal and unethical. Always obtain explicit permission before conducting any security testing on web applications.
 
-## ——17——
+## ——17—— IOT traffic
 
  To analyze the traffic capture from the IoT network located in the Documents folder of the "EH Workstation - 1" (ParrotSecurity) machine and identify the packet with an IoT Publish Message, follow these steps:
 
