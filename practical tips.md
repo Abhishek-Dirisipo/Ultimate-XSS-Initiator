@@ -417,7 +417,12 @@ Ensure that you conduct all activities within ethical boundaries and with proper
 3. **Apply Filter**: Apply a display filter in Wireshark to isolate packets related to IoT Publish Messages. The filter syntax may vary depending on the protocol used by the IoT devices. For example, if MQTT protocol is used, the filter could be:
 
    ```
-   mqtt.messageType == 3
+   mqtt.messageType == 3  
+   ```
+   or 
+   ```
+   
+   filter=mqtt
    ```
 
    This filter will display MQTT Publish Messages.
