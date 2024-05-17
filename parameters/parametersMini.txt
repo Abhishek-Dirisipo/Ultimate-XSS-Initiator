@@ -1,5 +1,3 @@
-?testing_dwfer=FUZZ
-defaultparam
 ?q=
 ?s=
 ?search=

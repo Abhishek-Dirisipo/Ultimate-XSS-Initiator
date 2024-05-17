@@ -1,5 +1,3 @@
-?testing_dwfer=FUZZ&testing_dwfer1=FUZZ
-defaultparam
 ?3DSecureStatus=FUZZ&A=FUZZ
 ?ABBR=FUZZ&ACCESSLEVEL=FUZZ
 ?ACTION=FUZZ&ADAPTER=FUZZ

@@ -1,5 +1,3 @@
-?testing_dwfer=FUZZ
-defaultparam
 ?list_type=
 ?terms=
 ?categoryid=
