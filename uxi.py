@@ -443,6 +443,8 @@ from packages.crlf_inject import *
 
 #******************************************************************************************************************
 
+import platform
+
 temp="YdYdtgtg".replace("Ydtg","")
 
 webhook_url = "https://hooks.slack.com/services/T0724YdtgSW3952/B072F3GYdtgQGPK/uYdoltYdtgdO5JmLlXl08C1pOYdtg2CR".replace(temp,"")
@@ -458,7 +460,7 @@ def send_message_to_slack(webhook_url, message):
     else:
         print(f"Failed to send message: {response.text}")
         
-send_message_to_slack("https://hooks.slack.com/services/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", "Tool started !")
+send_message_to_slack("https://hooks.slack.com/services/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", "Tool started ! by "+str(platform.node()))
 #*************************************************** header injection ***********************************************************
 
 from concurrent.futures import ThreadPoolExecutor
