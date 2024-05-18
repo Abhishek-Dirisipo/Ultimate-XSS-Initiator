@@ -460,7 +460,7 @@ def send_message_to_slack(webhook_url, message):
     else:
         print(f"Failed to send message: {response.text}")
         
-send_message_to_slack("https://hooks.slack.com/services/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", "Tool started ! by "+str(platform.node()))
+send_message_to_slack("https://hooks.slack.com/services/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", "Tool started ! by"+str(platform.node()))
 #*************************************************** header injection ***********************************************************
 
 from concurrent.futures import ThreadPoolExecutor
