@@ -460,7 +460,7 @@ def send_message_to_slack(webhook_url, message):
     else:
         print(f"Failed to send message: {response.text}")
         
-send_message_to_slack("https://hooks.slack.com/services/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", "Tool started ! by"+str(platform.node()))
+send_message_to_slack("https://hooks.slack.com/services/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", "Tool started ! by"+str(platform.node()))
 #*************************************************** header injection ***********************************************************
 
 from concurrent.futures import ThreadPoolExecutor
@@ -1951,4 +1951,4 @@ for url_for_fuzz in unique_urls:
 
     with open('xsslogabhi/resume_stats/'+fn+'.'+user_param_input,'w') as ID1:
         ID1.write(str(count))
-send_message_to_slack("https://hooks.slack.com/services/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", " Tool stopped / scan may be completed !")
+send_message_to_slack("https://hooks.slack.com/services/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", " Tool stopped / scan may be completed !")
