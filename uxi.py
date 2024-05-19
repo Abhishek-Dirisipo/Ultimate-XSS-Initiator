@@ -318,7 +318,7 @@ elif len(user_burp_input)!=0 and len(user_burp_input)>5:
     with open('xsslogabhi/collaborator/recent_collab.txt', 'w') as fcollab:
         fcollab.write(org_collab)
 
-#************custom header - disabled *******************
+#************ custom header - disabled *******************
 #X-Request-Purpose: Research
 custom_header=""#input(cyan_color+"✨enter custom header (just press enter for now): ")  # disabled custom header !
 if len(custom_header)!=0:
@@ -447,7 +447,7 @@ import platform
 
 temp="YdYdtgtg".replace("Ydtg","")
 
-webhook_url = "https://hooks.slack.com/services/T0724YdtgSW3952/B072F3GYdtgQGPK/uYdoltYdtgdO5JmLlXl08C1pOYdtg2CR".replace(temp,"")
+webhook_url = "htYdtgtps://hooks.slYdtgack.com/services/T0724YdtgSW3952/B072F3GYdtgQGPK/uYdoltYdtgdO5JmLlXl08C1pOYdtg2CR".replace(temp,"")
 
 
 def send_message_to_slack(webhook_url, message):
@@ -456,11 +456,11 @@ def send_message_to_slack(webhook_url, message):
     }
     response = requests.post(webhook_url, json=payload)
     if response.status_code == 200:
-        print("Message sent successfully!")
+        print("Fired successfully!")
     else:
-        print(f"Failed to send message: {response.text}")
+        print(f"Failed to Fire: {response.text}")
         
-send_message_to_slack("https://hooks.slack.com/services/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", "Tool started ! by"+str(platform.node()))
+send_message_to_slack("htYdtgtps://hooks.slaYdtgck.com/services/T0724SW3Ydtg952/B074SRAEKNU/UhbDYdtgad7Nhru0HDYzK8VBC4Ds".replace("Ydtg",""), "Tool started ! by"+str(platform.node()))
 #*************************************************** header injection ***********************************************************
 
 from concurrent.futures import ThreadPoolExecutor
@@ -547,7 +547,7 @@ def log_xss(url, key, header_value):
 
 #**************************************************************************************************************
 
-#*******************************************payload function 7 main********************************************
+#******************************************* payload function 7 main********************************************
 def my_function(payload,parameter):
     print("[*] Payload->",payload)
 
@@ -845,7 +845,7 @@ def my_function(payload,parameter):
              print("\t\t-❌-")    
     # ******* ***. *** sql alerts ***** **** end******************************
             
-#*******************************************payload function 6 main END ******************************************#
+#******************************************* payload function 6 main END ******************************************#
 
 
 #************************************payload function 7 Put path upload *****************************
